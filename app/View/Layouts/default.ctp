@@ -36,12 +36,39 @@
           <a class="brand" href="<? echo $this->Html->url('/'); ?>">QME</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li><? echo $this->Html->link('Content', '/content'); ?></li>
+                <?
+                  if($user != null) {
+                    echo '<li>';
+                    echo $this->Html->link('Dashboard', 
+                      array('controller'=>'users',
+                        'action'=>'dashboard'));                    
+                    echo '</li>';
+                  } else {
+                    echo '<li>';
+                    echo $this->Html->link('Login',
+                      array('controller'=>'users', 'action'=>'login'));
+                    echo '</li>';
+                    echo '<li>';
+                    echo $this->Html->link('Register',
+                      array('controller'=>'users', 'action'=>'register'));
+                    echo '</li>';
+                  }
+                ?>
             </ul>
             <?
             if($user != null) {
               echo '<ul class="nav pull-right">';
               echo '<li class="divider-vertical"></li>';
+              
+              // ---- user account info dropdown -----
+              $drop_title = 'Account';
+              $drop_links = array(
+                array('text'=>'Logout', 'link'=>
+                  array('controller'=>'users', 'action'=>'logout'),
+                  'icon'=>null)
+              );
+              echo $this->Bootstrap->dropdown($drop_title, $drop_links);
+
               echo '</ul>';
             }
             ?>
