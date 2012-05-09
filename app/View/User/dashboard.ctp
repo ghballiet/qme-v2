@@ -6,9 +6,9 @@
   <h1>Your Models</h1>
 </div>
 
-<table class="table">
+<table class="table table-condensed">
   <?
-  echo $this->Html->tableHeaders(array('Name', 'Description'));
+  echo $this->Html->tableHeaders(array('Name', 'Description', ''));
   foreach($models as $model) {
     $name = $model['Qmodel']['name'];
     $desc = $model['Qmodel']['description'];
@@ -16,10 +16,33 @@
     // TODO: add code here to build a button group, which is the last 
     // column in the cell. it contains three buttons, View, Edit, and
     // Delete. these should all be mini buttons.
+    $btns = '<div class="btn-toolbar">';
+    // view
+    $btns .= '<div class="btn-group">';
+    $btns .= $this->Html->link('View', array('controller'=>'qmodels', 
+      'action'=>'view', 'name'=>$name), array('class'=>
+      'btn btn-mini btn-primary'));
+    $btns .= '</div>';
+    // edit
+    $btns .= '<div class="btn-group">';
+    $btns .= $this->Html->link('Edit', array('controller'=>'qmodels',
+      'action'=>'edit', 'name'=>$name), array('class'=>
+      'btn btn-mini'));
+    $btns .= '</div>';
+    // delete
+    $btns .= '<div class="btn-group">';
+    $btns .= $this->Html->link('Delete', array('controller'=>'qmodels',
+      'action'=>'delete', 'name'=>$name), array('class'=>
+      'btn btn-mini btn-danger'), 'Are you sure you want to delete ' .
+      'this model?');
+    $btns .= '</div>';
+    
+    $btns .= '</div>';
     
     echo $this->Html->tableCells(array(
       $name,
-      $desc
+      $desc,
+      $btns
     ));
   }
   ?>
