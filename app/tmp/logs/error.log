@@ -1366,3 +1366,43 @@
 #1 /Users/glen/Dropbox/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
 #2 /Users/glen/Dropbox/Code/cake/qme/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2012-05-09 20:31:45 Error: [MissingActionException] Action UserController::css() could not be found.
+#0 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/ghunt/Code/cake/qme/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-09 20:31:51 Error: [MissingActionException] Action UserController::css() could not be found.
+#0 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/ghunt/Code/cake/qme/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-09 20:32:01 Error: [MissingActionException] Action UserController::css() could not be found.
+#0 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/ghunt/Code/cake/qme/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-09 20:32:04 Error: [MissingActionException] Action UserController::css() could not be found.
+#0 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/ghunt/Code/cake/qme/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-09 20:32:27 Error: [MissingActionException] Action UserController::css() could not be found.
+#0 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/ghunt/Code/cake/qme/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-09 20:32:37 Error: [MissingActionException] Action UserController::css() could not be found.
+#0 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/ghunt/Code/cake/qme/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-09 20:32:42 Error: [MissingActionException] Action UserController::css() could not be found.
+#0 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/ghunt/Code/cake/qme/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-09 20:36:28 Error: [MissingActionException] Action UserController::css() could not be found.
+#0 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/ghunt/Code/cake/qme/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
