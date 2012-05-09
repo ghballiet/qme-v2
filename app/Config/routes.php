@@ -28,6 +28,8 @@
 
 // Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
 Router::connect('/', array('controller'=>'users', 'action'=>'dashboard'));
+Router::connect('/models/:action/:short_name/*',
+  array('controller'=>'qmodels'), array('pass'=>array('short_name')));
 Router::connect('/models/:action/*', array('controller'=>'qmodels'));
 Router::connect('/:action/*', array('controller'=>'users'));
 Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));

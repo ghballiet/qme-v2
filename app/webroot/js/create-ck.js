@@ -1,0 +1,1 @@
+$(document).ready(function(){$("#QmodelName").keyup(function(a){var b=String.fromCharCode(a.keyCode);b.match(/\W/g)!=null&&b!="-"&&b!=" "&&a.preventDefault();var c=$(this).val();c=c.toLowerCase();c=c.replace(/\s+/g," ").trim();c=c.replace(/ /g,"-");$("#QmodelShortName").val(c)})});

@@ -10,7 +10,9 @@
   <?
   echo $this->Html->tableHeaders(array('Name', 'Description', ''));
   foreach($models as $model) {
+    $id = $model['Qmodel']['id'];
     $name = $model['Qmodel']['name'];
+    $short_name = $model['Qmodel']['short_name'];
     $desc = $model['Qmodel']['description'];
     
     // TODO: add code here to build a button group, which is the last 
@@ -20,19 +22,19 @@
     // view
     $btns .= '<div class="btn-group">';
     $btns .= $this->Html->link('View', array('controller'=>'qmodels', 
-      'action'=>'view', 'name'=>$name), array('class'=>
+      'action'=>'view', 'short_name'=>$short_name), array('class'=>
       'btn btn-mini btn-primary'));
     $btns .= '</div>';
     // edit
     $btns .= '<div class="btn-group">';
     $btns .= $this->Html->link('Edit', array('controller'=>'qmodels',
-      'action'=>'edit', 'name'=>$name), array('class'=>
+      'action'=>'edit', 'short_name'=>$short_name), array('class'=>
       'btn btn-mini'));
     $btns .= '</div>';
     // delete
     $btns .= '<div class="btn-group">';
     $btns .= $this->Html->link('Delete', array('controller'=>'qmodels',
-      'action'=>'delete', 'name'=>$name), array('class'=>
+      'action'=>'delete', 'short_name'=>$short_name), array('class'=>
       'btn btn-mini btn-danger'), 'Are you sure you want to delete ' .
       'this model?');
     $btns .= '</div>';

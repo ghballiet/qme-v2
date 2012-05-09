@@ -9,6 +9,7 @@ create table users (
 create table qmodels (
   id int primary key auto_increment,
   name varchar(250),
+  short_name varchar(250),
   description longtext,
   private boolean,
   user_id int

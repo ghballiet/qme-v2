@@ -16,12 +16,17 @@ class QmodelsController extends AppController {
     }
   }
   
-  function edit($id = null) {
+  function edit($short_name = null) {
     
   }
   
-  function delete($id = null) {
+  function delete($short_name = null) {
     
+  }
+  
+  function view($short_name = null) {
+    $model = $this->Qmodel->findByShortName($short_name);
+    $this->set('model', $model);
   }
 }
 ?>
