@@ -42,7 +42,10 @@ class BootstrapFormHelper extends AppHelper {
     $id = sprintf('%s %s', $this->model, $id);
     $id = str_replace(' ', '', ucwords($id));
     $str = '';
-    $str .= '<div class="control-group">';
+    if(isset($opts['type']) && $opts['type'] == 'hidden')
+      $str .= '<div class="control-group hidden">';
+    else
+      $str .= '<div class="control-group">';
     $str .= sprintf('<label for="%s" class="control-label">%s</label>',
       $id, $label);
     $str .= '<div class="controls">';

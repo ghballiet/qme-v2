@@ -7,7 +7,13 @@ class QmodelsController extends AppController {
   }
   
   function create() {
-    
+    if($this->request->is('post') &&
+      $model = $this->Qmodel->save($this->request->data)) {
+      $this->alertSuccess('Success!', sprintf('Successfully created ' . 
+        '<strong>%s</strong>.', $model['Qmodel']['name']), true);
+      $this->redirect(array('controller'=>'users',
+        'action'=>'dashboard'));
+    }
   }
   
   function edit($id = null) {

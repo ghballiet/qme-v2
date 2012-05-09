@@ -40,7 +40,8 @@ class UsersController extends AppController {
   }
   
   public function dashboard() {
-    
+    $models = $this->User->Qmodel->findAllByUserId($this->Auth->user('id'));
+    $this->set('models', $models);
   }
 }
 ?>

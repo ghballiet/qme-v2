@@ -1,7 +1,7 @@
 <?
 class User extends AppModel {
   public $name = 'User';
-  public $hasMany = array('Qmodels');
+  public $hasMany = array('Qmodel');
   
   public $validate = array(
     'email'=>array(
