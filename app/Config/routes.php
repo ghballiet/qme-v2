@@ -31,8 +31,10 @@ Router::connect('/', array('controller'=>'users', 'action'=>'dashboard'));
 Router::connect('/models/:action/:short_name/*',
   array('controller'=>'qmodels'), array('pass'=>array('short_name')));
 Router::connect('/models/:action/*', array('controller'=>'qmodels'));
-Router::connect('/:action/*', array('controller'=>'users'));
+Router::connect('/add_place/*', array('controller'=>'places', 'action'=>'create'));
 Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+Router::connect('/:action/*', array('controller'=>'users'));
+
 
 /**
  * Load all plugin routes.  See the CakePlugin documentation on 
