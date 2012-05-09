@@ -38,6 +38,13 @@
             <ul class="nav">
               <li><? echo $this->Html->link('Content', '/content'); ?></li>
             </ul>
+            <?
+            if($user != null) {
+              echo '<ul class="nav pull-right">';
+              echo '<li class="divider-vertical"></li>';
+              echo '</ul>';
+            }
+            ?>
           </div><!--/.nav-collapse -->
         </div>
       </div>
