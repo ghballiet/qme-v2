@@ -28,7 +28,7 @@
 
 // Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
 Router::connect('/', array('controller'=>'users', 'action'=>'dashboard'));
-Router::connect('/dashboard/*', array('controller'=>'users', 'action'=>'dashboard'));
+Router::connect('/models/:action/*', array('controller'=>'qmodels'));
 Router::connect('/:action/*', array('controller'=>'users'));
 Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 
