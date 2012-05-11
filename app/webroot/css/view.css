@@ -1,0 +1,6 @@
+div.left ul.nav li a{color:#999999;}
+div.left ul.nav li.place span.type{color:#000000;}
+div.left ul.nav li.place span.name,div.left ul.nav li.place span.location{color:#555555;}
+div.left ul.nav li.entity span.stable{color:#049cdb;}
+div.left ul.nav li.entity span.transient{color:#f89406;}
+div.left ul.nav li.entity span.name,div.left ul.nav li.entity span.location{color:#555555;}

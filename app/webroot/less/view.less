@@ -1,0 +1,15 @@
+@import 'variables';
+
+div.left ul.nav {
+  li a { color: @grayLight; }
+  li.place {
+    span.type { color: @black; }
+    span.name, span.location { color: @gray; }
+  }
+  
+  li.entity {
+    span.stable { color: @blue; }
+    span.transient { color: @orange; }
+    span.name, span.location { color: @gray; }
+  }
+}
