@@ -75,7 +75,7 @@ $this->end();
       }
       ?>
       <li class="divider"></li>
-      <li class="nav-header">Links</li>
+      <li class="nav-header">Hypotheses</li>
     </ul>
   </div>
   
