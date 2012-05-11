@@ -1,0 +1,70 @@
+{
+  "entities": [
+    {
+      "name": "cell",
+      "id": 1,
+      "x": 10,
+      "y": 10,
+      "width": 300,
+      "height": 300,
+      "children": [
+        {
+          "name": "lysosome",
+          "id": 2,
+          "x": 20,
+          "y": 20,
+          "width": 200,
+          "height": 200,
+          "children": [
+            {
+              "name": "nucleus",
+              "id": 4,
+              "x": 40,
+              "y": 40,
+              "width": 100,
+              "height": 100,
+              "entities": [
+                {
+                  "name": "mitochondria",
+                  "id": 1,
+                  "type": "transient",
+                  "x": 100,
+                  "y": 100,
+                  "width": 100,
+                  "height": 30
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "cytoplasm",
+          "id": 3,
+          "x": 200,
+          "y": 30,
+          "width": 150,
+          "height": 150,
+          "entities": [
+            {
+              "name": "ribosome",
+              "id": 2,
+              "type": "stable",
+              "x": 50,
+              "y": 50,
+              "width": 100,
+              "height": 30          
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "id": 1,
+      "start": 1,
+      "end": 2,
+      "type": "increases"
+    }
+  ]
+}

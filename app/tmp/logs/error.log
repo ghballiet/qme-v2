@@ -1971,3 +1971,47 @@
 #9 /Users/glen/Dropbox/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(QmodelsController), Object(CakeRequest), Object(CakeResponse))
 #10 /Users/glen/Dropbox/Code/cake/qme/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #11 {main}
+2012-05-11 15:10:04 Error: [MissingTableException] Table entities for model Entity was not found in datasource default.
+#0 /Users/ghunt/Code/cake/qme/lib/Cake/Model/Model.php(3408): Model->setSource('entities')
+#1 /Users/ghunt/Code/cake/qme/lib/Cake/Model/Datasource/DboSource.php(1044): Model->getDataSource()
+#2 /Users/ghunt/Code/cake/qme/lib/Cake/Model/Model.php(2663): DboSource->read(Object(Place), Array)
+#3 /Users/ghunt/Code/cake/qme/app/Controller/QmodelsController.php(36): Model->find('all', Array)
+#4 [internal function]: QmodelsController->view('test-model-nume...')
+#5 /Users/ghunt/Code/cake/qme/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(QmodelsController), Array)
+#6 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#7 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(QmodelsController), Object(CakeRequest), Object(CakeResponse))
+#8 /Users/ghunt/Code/cake/qme/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2012-05-11 15:10:06 Error: [MissingTableException] Table entities for model Entity was not found in datasource default.
+#0 /Users/ghunt/Code/cake/qme/lib/Cake/Model/Model.php(3408): Model->setSource('entities')
+#1 /Users/ghunt/Code/cake/qme/lib/Cake/Model/Datasource/DboSource.php(1044): Model->getDataSource()
+#2 /Users/ghunt/Code/cake/qme/lib/Cake/Model/Model.php(2663): DboSource->read(Object(Place), Array)
+#3 /Users/ghunt/Code/cake/qme/app/Controller/QmodelsController.php(36): Model->find('all', Array)
+#4 [internal function]: QmodelsController->view('test-model-nume...')
+#5 /Users/ghunt/Code/cake/qme/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(QmodelsController), Array)
+#6 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#7 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(QmodelsController), Object(CakeRequest), Object(CakeResponse))
+#8 /Users/ghunt/Code/cake/qme/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2012-05-11 15:10:32 Error: [MissingTableException] Table entities for model Entity was not found in datasource default.
+#0 /Users/ghunt/Code/cake/qme/lib/Cake/Model/Model.php(3408): Model->setSource('entities')
+#1 /Users/ghunt/Code/cake/qme/lib/Cake/Model/Datasource/DboSource.php(1044): Model->getDataSource()
+#2 /Users/ghunt/Code/cake/qme/lib/Cake/Model/Model.php(2663): DboSource->read(Object(Place), Array)
+#3 /Users/ghunt/Code/cake/qme/app/Controller/QmodelsController.php(36): Model->find('all', Array)
+#4 [internal function]: QmodelsController->view('test-model-nume...')
+#5 /Users/ghunt/Code/cake/qme/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(QmodelsController), Array)
+#6 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#7 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(QmodelsController), Object(CakeRequest), Object(CakeResponse))
+#8 /Users/ghunt/Code/cake/qme/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2012-05-11 15:10:34 Error: [MissingTableException] Table entities for model Entity was not found in datasource default.
+#0 /Users/ghunt/Code/cake/qme/lib/Cake/Model/Model.php(3408): Model->setSource('entities')
+#1 /Users/ghunt/Code/cake/qme/lib/Cake/Model/Datasource/DboSource.php(1044): Model->getDataSource()
+#2 /Users/ghunt/Code/cake/qme/lib/Cake/Model/Model.php(2663): DboSource->read(Object(Place), Array)
+#3 /Users/ghunt/Code/cake/qme/app/Controller/QmodelsController.php(36): Model->find('all', Array)
+#4 [internal function]: QmodelsController->view('test-model-nume...')
+#5 /Users/ghunt/Code/cake/qme/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(QmodelsController), Array)
+#6 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#7 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(QmodelsController), Object(CakeRequest), Object(CakeResponse))
+#8 /Users/ghunt/Code/cake/qme/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}

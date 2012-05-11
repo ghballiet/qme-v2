@@ -4,7 +4,9 @@ echo $this->Html->css('view');
 $this->end();
 
 $this->start('scripts');
+echo $this->Html->script('http://d3js.org/d3.v2.js');
 echo $this->Html->script('view');
+echo $this->Html->script('drawing');
 $this->end();
 ?>
 
@@ -75,7 +77,7 @@ $this->end();
       }
       ?>
       <li class="divider"></li>
-      <li class="nav-header">Hypotheses</li>
+      <li class="nav-header">Hypotheses</li>      
     </ul>
   </div>
   
