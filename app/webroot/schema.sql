@@ -18,13 +18,14 @@ create table qmodels (
 create table places (
   id int primary key auto_increment,
   name varchar(250),
-  parent_id int,
+  place_id int,
   qmodel_id int
 );
 
 create table entities (
   id int primary key auto_increment,
   name varchar(250),
+  type varchar(250),
   place_id int,
   qmodel_id int
 );

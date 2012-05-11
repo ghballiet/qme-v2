@@ -1,4 +1,8 @@
 <?
+$this->start('css');
+echo $this->Html->css('view');
+$this->end();
+
 $this->start('scripts');
 echo $this->Html->script('view');
 $this->end();
@@ -18,49 +22,70 @@ $this->end();
 
 <div class="row main">
   <!-- left -->
-  <div class="span3 well">
-    <div class="">
-      <h6>Places</h6>
+  <div class="span3 well left">
+    <ul class="nav nav-list">
+      <li class="nav-header">Places</li>
       <?
-      if(!isset($places))
-        echo '<div class="alert alert-info">No places have been created.</div>';
+      if($places != null) {
+        foreach($places as $place) {
+          $place_id = $place['Place']['id'];
+          $place_name = $place['Place']['name'];
+          $parent_id = $place['Parent']['id'];
+          $parent_name = $place['Parent']['name'];
+          echo '<li class="place">';
+          printf('<a href="#" data-type="places" data-id="%s">', 
+            $place_id);            
+          echo '<span class="type">place</span> ';
+          printf('<span class="name">%s</span>', $place_name);
+          if($parent_id != null) {
+            echo ' in ';
+            printf('<span class="location">%s</span>', $parent_name);
+          }
+          echo '</a>';
+          echo '</li>';
+        }
+      } else {
+        echo '<li><div class="alert alert-info">No places have been created.</div></li>';        
+      }
       ?>
-    </div>
-    <div class="entities">
-      <h6>Entities</h6>
+      <li class="divider"></li>
+      <li class="nav-header">Entities</li>
       <?
-      if(!isset($entities))
-        echo '<div class="alert alert-info">No entities have been created.</div>';
+      if($entities != null) {
+        foreach($entities as $entity) {
+          $entity_id = $entity['Entity']['id'];
+          $entity_name = $entity['Entity']['name'];
+          $entity_type = $entity['Entity']['type'];
+          $place_id = $entity['Place']['id'];
+          $place_name = $entity['Place']['name'];
+          echo '<li class="entity">';
+          printf('<a href="#" data-type="entities" data-id=%s>',
+            $entity_id);
+          printf('<span class="name">%s</span>', $entity_name);
+          echo ' in ';
+          printf('<span class="location">%s</span>', $place_name);
+          echo ' is ';
+          printf('<span class="type %s">%s</span>', $entity_type,
+            $entity_type);
+          echo '</a>';
+          echo '</li>';
+        }
+      } else {
+        echo '<li><div class="alert alert-info">No entities have been created.</div></li>';
+      }
       ?>
-    </div>
-    <div class="links">
-      <h6>Links</h6>
-      <?
-      if(!isset($links))
-        echo '<div class="alert alert-info">No links have been created.</div>';
-      ?>
-    </div>
+      <li class="divider"></li>
+      <li class="nav-header">Links</li>
+    </ul>
   </div>
   
   <!-- right -->
-  <div class="span9">
+  <div class="span9 right">
     <div id="canvas"></div>
   </div>
 </div>
 
-<div class="navbar secondary navbar-fixed-bottom">
-  <div class="navbar-inner">
-    <div class="container">
-      <ul class="nav">
-        <li><a href="#add_place" data-toggle="modal">Add Place</a></li>
-        <li><a href="#">Add Entity</a></li>
-        <li><a href="#">Add Link</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- modal dialogs -->
+<!-- add place modal -->
 <div class="modal fade" id="add_place">
   <div class="modal-header">
     <button class="close" data-dismiss="modal">&times;</button>
@@ -68,16 +93,17 @@ $this->end();
   </div>
   <div class="modal-body">
     <?
-    $place_url = $this->Html->url(array('controller'=>'places', 
-      'action'=>'create'));
-    echo $this->BootstrapForm->create('Place');
-    echo $this->BootstrapForm->input('name');
-    echo $this->BootstrapForm->input('url', array('value'=>$place_url,
-      'type'=>'hidden'));
-    if(isset($places))
-      echo $this->BootstrapForm->input('parent_id', array('options'=>$places_list));
+    echo $this->BootstrapForm->create('Place',
+      array('controller'=>'places', 'action'=>'create'));
+    echo $this->BootstrapForm->input('name', array('label'=>false));
+    if(isset($places) && $places != null) {
+      echo $this->BootstrapForm->input('parent_id',
+        array('options'=>$place_list, 'label'=>'in'));
+    }
+    echo $this->BootstrapForm->input('qmodel_id',
+      array('type'=>'hidden', 'value'=>$model['Qmodel']['id']));
+    echo '</form>';
     ?>    
-    </form>
   </div>
   <div class="modal-footer">
     <a href="#" data-dismiss="modal" class="btn">Close</a>
@@ -85,3 +111,28 @@ $this->end();
   </div>
 </div>
 
+<!-- add entity modal -->
+<div class="modal fade" id="add_entity">
+  <div class="modal-header">
+    <button class="close" data-dismiss="modal">&times;</button>
+    <h3>Add a New Entity</h3>
+  </div>
+  <div class="modal-body">
+    <?
+    echo $this->BootstrapForm->create('Entity',
+      array('controller'=>'entity', 'action'=>'create'));
+    echo $this->BootstrapForm->input('name', array('label'=>false));
+    echo $this->BootstrapForm->input('place_id',
+      array('options'=>$place_list, 'label'=>'in'));
+    echo $this->BootstrapForm->input('type', 
+      array('options'=>$entity_types, 'label'=>'is'));
+    echo $this->BootstrapForm->input('qmodel_id',
+      array('type'=>'hidden', 'value'=>$model['Qmodel']['id']));
+    echo '</form>';
+    ?>    
+  </div>
+  <div class="modal-footer">
+    <a href="#" data-dismiss="modal" class="btn">Close</a>
+    <a href="#" data-dismiss="modal" class="btn btn-primary">Save Changes</a>
+  </div>
+</div>

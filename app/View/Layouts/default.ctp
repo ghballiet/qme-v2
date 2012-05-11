@@ -8,7 +8,7 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <? echo $this->Html->css(array('base', 'home')); ?>
+    <? echo $this->Html->css(array('base')); ?>
     <style type="text/css">
     body { padding-top: 60px; }
     </style>
@@ -43,6 +43,14 @@
                       array('controller'=>'users',
                         'action'=>'dashboard'));                    
                     echo '</li>';
+                    if($this->params['controller'] == 'qmodels' && 
+                      $this->params['action'] == 'view') {
+                      // display links
+                      echo '<li class="divider-vertical"></li>';
+                      echo '<li><a href="#add_place" data-toggle="modal">Add Place</a></li>';
+                      echo '<li><a href="#add_entity" data-toggle="modal">Add Entity</a></li>';
+                      echo '<li><a href="#">Add Link</a></li>';
+                    }
                   } else {
                     echo '<li>';
                     echo $this->Html->link('Login',

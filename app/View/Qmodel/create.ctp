@@ -16,6 +16,8 @@ $this->end();
   echo $this->BootstrapForm->input('description');
   echo $this->BootstrapForm->input('user_id', array('type'=>'hidden', 
     'value'=>$user['id']));
+  echo $this->BootstrapForm->input('private', array('type'=>'hidden',
+    'value'=>false));
   echo $this->BootstrapForm->end('Add Model');
   ?>
 </fieldset>

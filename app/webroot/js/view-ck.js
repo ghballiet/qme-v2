@@ -1,1 +1,1 @@
-$(document).ready(function(){$(".modal .btn-primary").live("click",function(a){var b=$(this).parent().parent().find("form"),c={},d=null;$.map(b.serializeArray(),function(a,b){a.name.match(/data\[.*\]\[url\]/)?d=a.value:c[a.name]=a.value});$.post(d,c,function(a){console.log(a)})})});
+$(document).ready(function(){$(".modal .btn-primary").live("click",function(a){var b=$(this).parent().parent().find("form");b.submit()})});
