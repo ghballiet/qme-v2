@@ -7,7 +7,13 @@ $(document).ready(function() {
       { id: 4, name: 'nucleus', parent: 3, x: 20, y: 20, width: 150, height: 150 }
     ],
     entities: [
-      { id: 1, name: 'mitochondria', type: 'transient', x: 20, y: 20, location: 4 }
+      { id: 1, name: 'mitochondria', type: 'transient', x: 20, y: 20, location: 4 },
+      { id: 2, name: 'ribosome', type: 'stable', x: 20, y: 20, location: 2 },
+      { id: 3, name: 'ROS', type: 'transient', x: 30, y: 30, location: 3 }
+    ],
+    links: [
+      { id: 1, start: { id: 1, pos: {} }, end: { id: 2, pos: {} }, type: 'increases' }, 
+      { id: 2, start: { id: 2, pos: {} }, end: { id: 3, pos: {} }, type: 'decreases' }
     ]
   }
   var svg = null;
@@ -22,11 +28,13 @@ $(document).ready(function() {
 
   function startDrag(item) {
     fadeOut(item);
+    clearLinks();
   }
   
   
   function endDrag(item) {
     fadeIn(item);
+    drawLinks();
   }
   
 
@@ -61,10 +69,6 @@ $(document).ready(function() {
       var cy = parseInt(item.attr('cy')) + d3.event.dy;
       var r = parseInt(item.attr('r'));
       
-      // make sure we're within reasonable limits
-      if(width < r + 5 || height < r + 5)
-        return false;
-      
       // update the attributes
       item.attr('cx', cx).attr('cy', cy);
       rect.attr('height', height).attr('width', width);
@@ -73,13 +77,15 @@ $(document).ready(function() {
   
   var dragEntity = d3.behavior.drag()
     .on('dragstart', function() {
-      
+      clearLinks();
     })
     .on('drag', function(d, i) {
-      
+      d.x += d3.event.dx;
+      d.y += d3.event.dy;
+      d3.select(this).attr('transform', 'translate(' + d.x + ',' + d.y + ')');
     })
     .on('dragend', function() {
-      
+      drawLinks();
     });
     
   // ---- entry point ----
@@ -89,6 +95,8 @@ $(document).ready(function() {
     // draw the shapes
     drawPlaces();
     drawEntities();
+    drawMarkers();
+    drawLinks();
   }
   
   function drawPlaces() {
@@ -112,9 +120,9 @@ $(document).ready(function() {
       .text(function(d) { return d.name; });
   
     place.append('circle')
-      .attr('r', 10)
-      .attr('cx', function(d) { return d.width - 15; })
-      .attr('cy', function(d) { return d.height - 15; })
+      .attr('r', 7)
+      .attr('cx', function(d) { return d.width; })
+      .attr('cy', function(d) { return d.height; })
       .attr('group', function(d) { return 'place' + d.id; })
       .call(dragHandle);
       
@@ -129,6 +137,9 @@ $(document).ready(function() {
   }
   
   function drawEntities() {
+    var entity_width = 100;
+    var entity_height = 30;
+
     var entity = svg.selectAll('g.entitiy').data(json.entities)
       .enter().append('g')
         .attr('class', function(d) { return 'entity entity' + d.id + ' ' + d.type; })
@@ -139,12 +150,12 @@ $(document).ready(function() {
         .call(dragEntity);
     
     entity.append('rect')
-      .attr('width', 200)
-      .attr('height', 50);
+      .attr('width', entity_width)
+      .attr('height', entity_height);
     
     entity.append('text')
       .attr('text-anchor', 'middle')
-      .attr('x', 100)
+      .attr('x', entity_width / 2)
       .attr('dy', '1.6em')
       .text(function(d) { return d.name; });
     
@@ -156,6 +167,86 @@ $(document).ready(function() {
         parent.append($(this));
       }
     });
+  }
+  
+  function drawMarkers() {
+    // draws the triangles used as endpoints for lines
+    // markers don't inherit styles, so we have to add one per type
+    svg.append('defs').selectAll('marker')
+      .data(['increases', 'decreases', 'does-not-change'])
+      .enter().append('marker')
+        .attr('id', String)
+        .attr('viewBox', '0 -5 10 10')
+        .attr('refX', 0)
+        .attr('refY', 0)
+        .attr('markerWidth', 4)
+        .attr('markerHeight', 4)
+        .attr('orient', 'auto')
+      .append('path')
+        .attr('d', 'M0,-5L10,0L0,5');
+  }
+  
+  function drawLinks() {
+    // start by replacing the start and end coordinates in the data
+    // with the centroid    
+    for(var i in json.links) {
+      var link = json.links[i];
+      var start_id = link.start.id;
+      var end_id = link.end.id;
+      var start_centroid = getCentroid(start_id);
+      var end_centroid = getCentroid(end_id);
+      var start_node = $('.entity[data-id="' + start_id + '"]');
+      var end_node = $('.entity[data-id="' + end_id + '"]');
+      
+      // now, compute the entry and exit points depending upon the 
+      // relative positions of the centroids
+      if(start_centroid.y <= end_centroid.y) {
+        // use the bottom
+        var y = start_node.offset().top + parseInt(start_node.attr('height'));
+        start_centroid.y = y;        
+      } else {
+        start_centroid.y = start_node.offset().top;
+      }
+      
+      // update the json data
+      link.start.pos = start_centroid;
+      link.end.pos = end_centroid;
+    }
+        
+    // build the line factory
+    var diagonal = d3.svg.diagonal()
+      .source(function(d, i) { return d.start.pos; })
+      .target(function(d, i) { return d.end.pos; });
+    
+    var link = svg.selectAll('path.link').data(json.links)
+      .enter().append('path')
+      .attr('class', function(d) { return 'link ' + d.type; })
+      .attr('data-start', function(d) { return d.start.id; })
+      .attr('data-end', function(d) { return d.end.id; })
+      .attr('data-type', function(d) { return d.type; })
+      .attr('opacity', 0.0)
+      .attr('d', diagonal)
+      .attr('marker-end', function(d) { return 'url(#' + d.type + ')'; });
+  }
+  
+  function clearLinks() {
+    d3.selectAll('path.link').remove();
+  }
+  
+  function getCentroid(id) {
+    var selector = '.entity[data-id="' + id + '"]';
+    var entity = d3.select(selector);
+    var rect = d3.select(selector + ' rect');
+    var data = entity.datum();
+    var x = $(selector).offset().left - 12;
+    var y = $(selector).offset().top - 12;
+    var w = parseInt(rect.attr('width'));
+    var h = parseInt(rect.attr('height'));
+    
+    // compute the centroid
+    var cx = x + (w / 2);
+    var cy = y + (h / 2);    
+    return { x: cx, y: cy };
   }
   
   init();
