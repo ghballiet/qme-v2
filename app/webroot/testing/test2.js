@@ -3,13 +3,13 @@ $(document).ready(function() {
     places: [
       { id: 1, name: 'cell', x: 20, y: 30, width: 500, height: 400 },
       { id: 2, name: 'lysosome', parent: 1, x: 40, y: 50, width: 200, height: 250 },
-      { id: 3, name: 'cytoplasm', parent: 1, x: 200, y: 50, width: 200, height: 250 },
-      { id: 4, name: 'nucleus', parent: 3, x: 20, y: 20, width: 150, height: 150 }
+      { id: 3, name: 'cytoplasm', parent: 1, x: 269, y: 52, width: 200, height: 250 },
+      { id: 4, name: 'nucleus', parent: 3, x: 23, y: 83, width: 150, height: 150 }
     ],
     entities: [
-      { id: 1, name: 'mitochondria', type: 'transient', x: 20, y: 20, location: 4 },
-      { id: 2, name: 'ribosome', type: 'stable', x: 20, y: 20, location: 2 },
-      { id: 3, name: 'ROS', type: 'transient', x: 30, y: 30, location: 3 }
+      { id: 1, name: 'mitochondria', type: 'transient', x: 20, y: 93, location: 4 },
+      { id: 2, name: 'ribosome', type: 'stable', x: 45, y: 111, location: 2 },
+      { id: 3, name: 'ROS', type: 'transient', x: 41, y: 39, location: 3 }
     ],
     links: [
       { id: 1, start: { id: 1, pos: {} }, end: { id: 2, pos: {} }, type: 'increases' }, 
@@ -189,28 +189,69 @@ $(document).ready(function() {
   function drawLinks() {
     // start by replacing the start and end coordinates in the data
     // with the centroid    
+    
     for(var i in json.links) {
       var link = json.links[i];
       var start_id = link.start.id;
       var end_id = link.end.id;
       var start_centroid = getCentroid(start_id);
       var end_centroid = getCentroid(end_id);
-      var start_node = $('.entity[data-id="' + start_id + '"]');
-      var end_node = $('.entity[data-id="' + end_id + '"]');
       
+      // grab the shape info
+      var start_selector = '.entity[data-id="' + start_id + '"]';
+      var end_selector = '.entity[data-id="' + end_id + '"]';
+      var start_node = $(start_selector);
+      var end_node = $(end_selector);
+      var start_shape = d3.select(start_selector + ' rect');
+      var end_shape = d3.select(end_selector + ' rect');
+      var start_x = start_node.offset().left;
+      var start_y = start_node.offset().top;
+      var end_x = end_node.offset().left;
+      var end_y = end_node.offset().top;
+      var start_height = parseInt(start_shape.attr('height'));
+      var start_width = parseInt(start_shape.attr('width'));
+      var end_height = parseInt(end_shape.attr('height'));
+      var end_width = parseInt(end_shape.attr('width'));
+        
       // now, compute the entry and exit points depending upon the 
       // relative positions of the centroids
-      if(start_centroid.y <= end_centroid.y) {
-        // use the bottom
-        var y = start_node.offset().top + parseInt(start_node.attr('height'));
-        start_centroid.y = y;        
+      var vert_dist = Math.abs(start_y - end_y) - end_height;
+      if(vert_dist < 0)
+        vert_dist = 0;
+      
+      if(vert_dist < 50) {
+        // go from left to right
+        if(start_centroid.x <= end_centroid.x) {
+          start_centroid.x = start_x + start_width;
+          start_centroid.x -= 8;
+          start_centroid.y -= 5;
+          end_centroid.x = end_x;
+          end_centroid.x -= 8;
+        } else {
+          start_centroid.x = start_x;
+          start_centroid.x -= 8;
+          start_centroid.y -= 5;
+          end_centroid.x = end_x + end_width;
+          end_centroid.x -= 8;
+          end_centroid.y += 5;
+        }
       } else {
-        start_centroid.y = start_node.offset().top;
+        if(start_centroid.y <= end_centroid.y) {
+          start_centroid.y = start_y + start_height;
+          start_centroid.y -= 5;
+          end_centroid.y = end_y;
+          end_centroid.y -= 20;
+        } else {
+          start_centroid.y = start_y;
+          start_centroid.y -= 8;
+          end_centroid.y = end_y + end_height;
+          end_centroid.y += 5;
+        }
       }
       
       // update the json data
-      link.start.pos = start_centroid;
-      link.end.pos = end_centroid;
+      json.links[i].start.pos = start_centroid;
+      json.links[i].end.pos = end_centroid;
     }
         
     // build the line factory
@@ -238,13 +279,13 @@ $(document).ready(function() {
     var entity = d3.select(selector);
     var rect = d3.select(selector + ' rect');
     var data = entity.datum();
-    var x = $(selector).offset().left - 12;
-    var y = $(selector).offset().top - 12;
+    var x = $(selector).offset().left;
+    var y = $(selector).offset().top;
     var w = parseInt(rect.attr('width'));
     var h = parseInt(rect.attr('height'));
     
     // compute the centroid
-    var cx = x + (w / 2);
+    var cx = x + (w / 2) - 7;
     var cy = y + (h / 2);    
     return { x: cx, y: cy };
   }
