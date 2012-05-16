@@ -212,40 +212,36 @@ $(document).ready(function() {
       var start_width = parseInt(start_shape.attr('width'));
       var end_height = parseInt(end_shape.attr('height'));
       var end_width = parseInt(end_shape.attr('width'));
+      
+      // build the line factory
+      var diagonal = d3.svg.diagonal()
+        .source(function(d, i) { return d.start.pos; })
+        .target(function(d, i) { return d.end.pos; });
         
       // now, compute the entry and exit points depending upon the 
       // relative positions of the centroids
       var vert_dist = Math.abs(start_y - end_y) - end_height;
+      var horz_dist = Math.abs(start_x - end_x) - end_width;
       if(vert_dist < 0)
         vert_dist = 0;
+      if(horz_dist < 0)
+        horz_dist = 0;
       
       if(vert_dist < 50) {
-        // go from left to right
         if(start_centroid.x <= end_centroid.x) {
           start_centroid.x = start_x + start_width;
-          start_centroid.x -= 8;
-          start_centroid.y -= 5;
           end_centroid.x = end_x;
-          end_centroid.x -= 8;
         } else {
           start_centroid.x = start_x;
-          start_centroid.x -= 8;
-          start_centroid.y -= 5;
           end_centroid.x = end_x + end_width;
-          end_centroid.x -= 8;
-          end_centroid.y += 5;
         }
       } else {
         if(start_centroid.y <= end_centroid.y) {
           start_centroid.y = start_y + start_height;
-          start_centroid.y -= 5;
           end_centroid.y = end_y;
-          end_centroid.y -= 20;
         } else {
           start_centroid.y = start_y;
-          start_centroid.y -= 8;
           end_centroid.y = end_y + end_height;
-          end_centroid.y += 5;
         }
       }
       
@@ -253,25 +249,34 @@ $(document).ready(function() {
       json.links[i].start.pos = start_centroid;
       json.links[i].end.pos = end_centroid;
     }
-        
-    // build the line factory
-    var diagonal = d3.svg.diagonal()
-      .source(function(d, i) { return d.start.pos; })
-      .target(function(d, i) { return d.end.pos; });
     
-    var link = svg.selectAll('path.link').data(json.links)
-      .enter().append('path')
+    var link = svg.selectAll('line.link').data(json.links)
+      .enter().append('line')
       .attr('class', function(d) { return 'link ' + d.type; })
+      .attr('data-start', function(d) { return d.start.id; })
       .attr('data-start', function(d) { return d.start.id; })
       .attr('data-end', function(d) { return d.end.id; })
       .attr('data-type', function(d) { return d.type; })
-      .attr('opacity', 0.0)
-      .attr('d', diagonal)
+      .attr('x1', function(d) { return d.start.pos.x; })
+      .attr('x2', function(d) { return d.end.pos.x; })
+      .attr('y1', function(d) { return d.start.pos.y; })
+      .attr('y2', function(d) { return d.end.pos.y; })
       .attr('marker-end', function(d) { return 'url(#' + d.type + ')'; });
+
+    
+    // var link = svg.selectAll('path.link').data(json.links)
+    //   .enter().append('path')
+    //   .attr('class', function(d) { return 'link ' + d.type; })
+    //   .attr('data-start', function(d) { return d.start.id; })
+    //   .attr('data-end', function(d) { return d.end.id; })
+    //   .attr('data-type', function(d) { return d.type; })
+    //   .attr('opacity', 0.0)
+    //   .attr('d', line)
+    //   .attr('marker-end', function(d) { return 'url(#' + d.type + ')'; });
   }
   
   function clearLinks() {
-    d3.selectAll('path.link').remove();
+    d3.selectAll('line.link').remove();
   }
   
   function getCentroid(id) {
