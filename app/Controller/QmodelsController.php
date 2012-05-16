@@ -35,7 +35,16 @@ class QmodelsController extends AppController {
     );
     $places = $this->Qmodel->Place->find('all', $place_options);
     $place_options['order'] = array('Place.name');
-    $place_list = $this->Qmodel->Place->find('list', $place_options);
+    // build the place list
+    $place_list = array();
+    foreach($places as $place) {
+      if($place['Parent']['id'] != null)
+        $name = sprintf('%s in %s', $place['Place']['name'], $place['Parent']['name']);
+      else
+        $name = $place['Place']['name'];
+      $place_list[$place['Place']['id']] = $name;
+    }
+    // $place_list = $this->Qmodel->Place->find('list', $place_options);
     
     // ---- entities ----
     $entity_options = array(
@@ -44,8 +53,29 @@ class QmodelsController extends AppController {
     );
     $entities = $this->Qmodel->Place->Entity->find('all', $entity_options);
     $entity_options['order'] = array('Entity.name');
-    $entity_list = $this->Qmodel->Place->Entity->find('list', $entity_options);
-    $entity_types = array('stable'=>'stable', 'transient'=>'transient');
+    // build the entity list
+    $entity_list = array();
+    foreach($entities as $entity) {
+      $name = sprintf('%s in %s', $entity['Entity']['name'], 
+        $entity['Place']['name']);
+      $entity_list[$entity['Entity']['id']] = $name;
+    }
+    $entity_types = array(
+      'stable'=>'stable',
+      'transient'=>'transient'
+    );
+    
+    // ---- links ----
+    $link_options = array(
+      'conditions'=>array('Link.qmodel_id'=>$model_id),
+      'order'=>array('Source.name', 'Target.name')
+    );
+    $links = $this->Qmodel->Link->find('all', $link_options);
+    $link_types = array(
+      'increases' => 'increases',
+      'decreases' => 'decreases',
+      'does_not_change' => 'does not change'
+    );
 
     $this->set('model', $model);
     $this->set('places', $places);
@@ -53,6 +83,8 @@ class QmodelsController extends AppController {
     $this->set('entities', $entities);
     $this->set('entity_list', $entity_list);
     $this->set('entity_types', $entity_types);
+    $this->set('links', $links);
+    $this->set('link_types', $link_types);
   }
 }
 ?>

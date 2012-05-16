@@ -35,3 +35,11 @@ create table entities (
   place_id int,
   qmodel_id int
 );
+
+create table links (
+  id int primary key auto_increment,
+  source_id int,
+  target_id int,
+  type varchar(250),
+  qmodel_id int
+);

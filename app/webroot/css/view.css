@@ -8,8 +8,18 @@ div.left ul.nav li.place span.name,div.left ul.nav li.place span.location{color:
 div.left ul.nav li.entity span.stable{color:#049cdb;}
 div.left ul.nav li.entity span.transient{color:#f89406;}
 div.left ul.nav li.entity span.name,div.left ul.nav li.entity span.location{color:#555555;}
-#canvas{border:1px solid rgba(0, 0, 0, 0.05);-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
+div.left ul.nav li.link span.stable{color:#049cdb;}
+div.left ul.nav li.link span.transient{color:#f89406;}
+div.left ul.nav li.link span.increases{color:#46a546;}
+div.left ul.nav li.link span.decreases{color:#9d261d;}
+div.left ul.nav li.link span.does_not_change{color:#ffc40d;}
+#canvas{border:1px solid rgba(0, 0, 0, 0.1);-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
+svg .saving{fill:#74c474;stroke:#46a546;stroke-width:2;}
 svg .place rect,svg .place circle{fill:rgba(255, 255, 255, 0.8);stroke:rgba(0, 0, 0, 0.25);stroke-width:3px;}
 svg .entity text{fill:#ffffff;}
 svg .entity.stable rect{fill:#049cdb;stroke:#037fb3;}
 svg .entity.transient rect{fill:#f89406;}
+svg .link{fill:transparent;stroke-width:3;opacity:.75;}svg .link.increases{stroke:#46a546;}
+svg .link.decreases{stroke:#9d261d;}
+svg marker#increases{fill:#46a546;}
+svg marker#decreases{fill:#9d261d;}

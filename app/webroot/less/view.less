@@ -13,14 +13,28 @@ div.left ul.nav {
     span.transient { color: @orange; }
     span.name, span.location { color: @gray; }
   }
+  
+  li.link {
+    span.stable { color: @blue; }
+    span.transient { color: @orange; }
+    span.increases { color: @green; }
+    span.decreases { color: @red; }
+    span.does_not_change { color: @yellow; }
+  }
 }
 
 #canvas {
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   .border-radius(4px);
 }
 
 svg {
+  .saving {
+    fill: lighten(@green, 15);
+    stroke: @green;
+    stroke-width: 2;
+  }
+  
   .place rect, .place circle {
     fill: rgba(255,255,255,.8);
     stroke: rgba(0,0,0,.25);
@@ -36,4 +50,15 @@ svg {
   .entity.transient rect {
     fill: @orange;
   }
+  
+  .link {
+    fill: transparent; 
+    stroke-width: 3;
+    opacity: .75;
+    &.increases { stroke: @green; }
+    &.decreases { stroke: @red; }
+  }
+  
+  marker#increases { fill: @green; }
+  marker#decreases { fill: @red; }
 }

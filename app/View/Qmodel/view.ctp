@@ -35,6 +35,15 @@ foreach($entities as $entity) {
 }
 ?>
   ];
+  json.links = [
+<?
+foreach($links as $link) {
+  $l = $link['Link'];
+  printf("    { id: %d, start: { id: %d, pos: {} }, end: { id: %d, pos: {} }, type: '%s'},\n",
+    $l['id'], $l['target_id'], $l['source_id'], $l['type']);
+}
+?>
+  ];
 </script>
 
 <div class="page-header">
@@ -88,7 +97,7 @@ foreach($entities as $entity) {
           $place_id = $entity['Place']['id'];
           $place_name = $entity['Place']['name'];
           echo '<li class="entity">';
-          printf('<a href="#" data-type="entities" data-id=%s>',
+          printf('<a href="#" data-type="entities" data-id="%s">',
             $entity_id);
           printf('<span class="name">%s</span>', $entity_name);
           echo ' in ';
@@ -104,7 +113,33 @@ foreach($entities as $entity) {
       }
       ?>
       <li class="divider"></li>
-      <li class="nav-header">Hypotheses</li>      
+      <li class="nav-header">Hypotheses</li>
+      <?
+      if($links != null) {
+        foreach($links as $link) {
+          $link_id = $link['Link']['id'];
+          $link_type = $link['Link']['type'];
+          $source_id = $link['Source']['id'];
+          $source_name = $entity_list[$source_id];
+          $source_type = $link['Source']['type'];
+          $target_id = $link['Target']['id'];
+          $target_name = $entity_list[$target_id];
+          $target_type = $link['Target']['type'];
+          echo '<li class="link">';
+          printf('<a href="#" data-type="links" data-id="%s">', $link_id);
+          printf('<span class="source %s">%s</span>', $source_type,
+            $source_name);
+          printf(' <span class="type %s">%s</span>', $link_type, $link_type);
+          echo ' with ';
+          printf('<span class="target %s">%s</span>', $target_type,
+            $target_name);
+          echo '</a>';
+          echo '</li>';
+        }
+      } else {
+        echo '<li><div class="alert alert-info">No hypotheses have been created.</div></li>'; 
+      }
+      ?>
     </ul>
   </div>
   
@@ -155,6 +190,33 @@ foreach($entities as $entity) {
       array('options'=>$place_list, 'label'=>'in'));
     echo $this->BootstrapForm->input('type', 
       array('options'=>$entity_types, 'label'=>'is'));
+    echo $this->BootstrapForm->input('qmodel_id',
+      array('type'=>'hidden', 'value'=>$model['Qmodel']['id']));
+    echo '</form>';
+    ?>    
+  </div>
+  <div class="modal-footer">
+    <a href="#" data-dismiss="modal" class="btn">Close</a>
+    <a href="#" data-dismiss="modal" class="btn btn-primary">Save Changes</a>
+  </div>
+</div>
+
+<!-- add link modal -->
+<div class="modal fade" id="add_link">
+  <div class="modal-header">
+    <button class="close" data-dismiss="modal">&times;</button>
+    <h3>Add a New Hypothesis</h3>
+  </div>
+  <div class="modal-body">
+    <?
+    echo $this->BootstrapForm->create('Link',
+      array('controller'=>'links', 'action'=>'create'));
+    echo $this->BootstrapForm->input('source_id', 
+      array('options'=>$entity_list, 'label'=>''));
+    echo $this->BootstrapForm->input('type',
+      array('options'=>$link_types, 'label'=>''));
+    echo $this->BootstrapForm->input('target_id', 
+      array('options'=>$entity_list, 'label'=>'with'));
     echo $this->BootstrapForm->input('qmodel_id',
       array('type'=>'hidden', 'value'=>$model['Qmodel']['id']));
     echo '</form>';

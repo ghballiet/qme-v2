@@ -1,6 +1,18 @@
 $(document).ready(function() {
   var svg = null;
   
+  function startSaving() {
+    d3.select('circle.saving').transition()
+      .duration(250)
+      .attr('opacity', 1.0);
+  }
+  
+  function endSaving() {
+    d3.select('circle.saving').transition()
+      .duration(250)
+      .attr('opacity', 0.0);
+  }
+  
   function fadeOut(item) {
     item.attr('opacity', 0.5);
   }
@@ -14,7 +26,6 @@ $(document).ready(function() {
     clearLinks();
   }
   
-  
   function endDrag(item) {
     fadeIn(item);
     savePlace(item);
@@ -25,7 +36,9 @@ $(document).ready(function() {
     var data = item.datum();
     var arr = { Place: data };
     var url = '../../update_place';
+    startSaving();
     $.post(url, arr, function(response) {
+      endSaving();
       // console.log(response);
     });
   }
@@ -34,7 +47,9 @@ $(document).ready(function() {
     var data = item.datum();
     var arr = { Entity: data };
     var url = '../../update_entity';
+    startSaving();
     $.post(url, arr, function(response) {
+      endSaving();
       // console.log(response);
     });
   }  
@@ -100,13 +115,23 @@ $(document).ready(function() {
       d3.select(this).attr('transform', 'translate(' + d.x + ',' + d.y + ')');
     })
     .on('dragend', function() {
-      d3.select(this).call(fadeIn);
+      d3.select(this).call(fadeIn).call(saveEntity);
       drawLinks();
     });
     
   // ---- entry point ----
   function init() {
     svg = d3.select('#canvas').append('svg');
+    
+    // draw the "saving" icon
+    var circ = svg.selectAll('circle.saving')
+      .data([{ cx: 15, cy: 15, r: 5 }])
+      .enter().append('circle')
+        .attr('class', 'saving')
+        .attr('opacity', 0.0)
+        .attr('cx', function(d) { return d.cx; })
+        .attr('cy', function(d) { return d.cy; })
+        .attr('r', function(d) { return d.r; });
     
     // draw the shapes
     drawPlaces();
@@ -205,6 +230,8 @@ $(document).ready(function() {
   function drawLinks() {
     // start by replacing the start and end coordinates in the data
     // with the centroid    
+    var off_x = $('#canvas').offset().left;
+    var off_y = $('#canvas').offset().top;
     
     for(var i in json.links) {
       var link = json.links[i];
@@ -220,10 +247,10 @@ $(document).ready(function() {
       var end_node = $(end_selector);
       var start_shape = d3.select(start_selector + ' rect');
       var end_shape = d3.select(end_selector + ' rect');
-      var start_x = start_node.offset().left;
-      var start_y = start_node.offset().top;
-      var end_x = end_node.offset().left;
-      var end_y = end_node.offset().top;
+      var start_x = start_node.offset().left - off_x;
+      var start_y = start_node.offset().top - off_y;
+      var end_x = end_node.offset().left - off_x;
+      var end_y = end_node.offset().top - off_y;
       var start_height = parseInt(start_shape.attr('height'));
       var start_width = parseInt(start_shape.attr('width'));
       var end_height = parseInt(end_shape.attr('height'));
@@ -264,6 +291,8 @@ $(document).ready(function() {
       // update the json data
       json.links[i].start.pos = start_centroid;
       json.links[i].end.pos = end_centroid;
+      
+      console.log(json.links[i].start.pos, json.links[i].end.pos);
     }
     
     var link = svg.selectAll('line.link').data(json.links)

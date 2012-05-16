@@ -35,6 +35,7 @@ Router::connect('/update_place/*', array('controller'=>'places', 'action'=>'upda
 Router::connect('/update_entity/*', array('controller'=>'entities', 'action'=>'update'));
 Router::connect('/add_place/*', array('controller'=>'places', 'action'=>'create'));
 Router::connect('/add_entity/*', array('controller'=>'entities', 'action'=>'create'));
+Router::connect('/add_link/*', array('controller'=>'links', 'action'=>'create'));
 Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 Router::connect('/:action/*', array('controller'=>'users'));
 

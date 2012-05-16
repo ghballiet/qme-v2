@@ -49,7 +49,7 @@
                       echo '<li class="divider-vertical"></li>';
                       echo '<li><a href="#add_place" data-toggle="modal">Add Place</a></li>';
                       echo '<li><a href="#add_entity" data-toggle="modal">Add Entity</a></li>';
-                      echo '<li><a href="#">Add Link</a></li>';
+                      echo '<li><a href="#add_link" data-toggle="modal">Add Hypothesis</a></li>';
                     }
                   } else {
                     echo '<li>';
