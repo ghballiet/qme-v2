@@ -13,5 +13,15 @@ class EntitiesController extends AppController {
         'short_name'=>$short_name));
     }
   }
+  
+  public function update() {
+    $this->layout = 'ajax';
+    if($this->request->is('post') &&
+      $entity = $this->Entity->save($this->request->data)) {
+      print_r($entity);
+    } else {
+      echo 'FAILURE :(';
+    }
+  }
 }
 ?>

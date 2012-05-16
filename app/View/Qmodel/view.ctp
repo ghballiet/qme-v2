@@ -15,8 +15,7 @@ $this->end();
     places: [],
     entities: [],
     links: []
-  };
-  
+  };  
   json.places = [
 <?
 foreach($places as $place) {
@@ -24,6 +23,15 @@ foreach($places as $place) {
     $place['Place']['id'], $place['Place']['name'],
     $place['Place']['x'], $place['Place']['y'], $place['Place']['parent_id'],
     $place['Place']['width'], $place['Place']['height']);
+}
+?>
+  ];
+  json.entities = [
+<?
+foreach($entities as $entity) {
+  $e = $entity['Entity'];
+  printf("    { id: %d, name: '%s', x: %d, y: %d, location: %d, type: '%s' },\n",
+    $e['id'], $e['name'], $e['x'], $e['y'], $e['place_id'], $e['type']);
 }
 ?>
   ];

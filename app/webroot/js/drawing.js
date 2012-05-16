@@ -30,6 +30,14 @@ $(document).ready(function() {
     });
   }
   
+  function saveEntity(item) {
+    var data = item.datum();
+    var arr = { Entity: data };
+    var url = '../../update_entity';
+    $.post(url, arr, function(response) {
+      // console.log(response);
+    });
+  }  
 
   // ---- draggable ----
   var dragPlace = d3.behavior.drag()
@@ -83,6 +91,7 @@ $(document).ready(function() {
   
   var dragEntity = d3.behavior.drag()
     .on('dragstart', function() {
+      d3.select(this).call(fadeOut);
       clearLinks();
     })
     .on('drag', function(d, i) {
@@ -91,6 +100,7 @@ $(document).ready(function() {
       d3.select(this).attr('transform', 'translate(' + d.x + ',' + d.y + ')');
     })
     .on('dragend', function() {
+      d3.select(this).call(fadeIn);
       drawLinks();
     });
     

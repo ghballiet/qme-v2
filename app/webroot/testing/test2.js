@@ -77,6 +77,7 @@ $(document).ready(function() {
   
   var dragEntity = d3.behavior.drag()
     .on('dragstart', function() {
+      d3.select(this).call(fadeOut);
       clearLinks();
     })
     .on('drag', function(d, i) {
@@ -85,6 +86,7 @@ $(document).ready(function() {
       d3.select(this).attr('transform', 'translate(' + d.x + ',' + d.y + ')');
     })
     .on('dragend', function() {
+      d3.select(this).call(fadeIn);
       drawLinks();
     });
     
