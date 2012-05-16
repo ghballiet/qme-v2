@@ -4,11 +4,30 @@ echo $this->Html->css('view');
 $this->end();
 
 $this->start('scripts');
-echo $this->Html->script('http://d3js.org/d3.v2.js');
+echo $this->Html->script('d3.v2.min.js');
 echo $this->Html->script('view');
 echo $this->Html->script('drawing');
 $this->end();
 ?>
+
+<script type="text/javascript">
+  var json = {
+    places: [],
+    entities: [],
+    links: []
+  };
+  
+  json.places = [
+<?
+foreach($places as $place) {
+  printf("    { id: %d, name: '%s', x: %d, y: %d, parent: %d, width: %d, height: %d },\n", 
+    $place['Place']['id'], $place['Place']['name'],
+    $place['Place']['x'], $place['Place']['y'], $place['Place']['parent_id'],
+    $place['Place']['width'], $place['Place']['height']);
+}
+?>
+  ];
+</script>
 
 <div class="page-header">
   <h1>
@@ -24,8 +43,8 @@ $this->end();
 
 <div class="row main">
   <!-- left -->
-  <div class="span3 well left">
-    <ul class="nav nav-list">
+  <div class="span3 left">
+    <ul class="nav nav-list well">    
       <li class="nav-header">Places</li>
       <?
       if($places != null) {
