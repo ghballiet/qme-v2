@@ -231,7 +231,7 @@ $(document).ready(function() {
     // start by replacing the start and end coordinates in the data
     // with the centroid    
     var off_x = $('#canvas').offset().left;
-    var off_y = $('#canvas').offset().top;
+    var off_y = $('#canvas').offset().top + 150;
     
     for(var i in json.links) {
       var link = json.links[i];
