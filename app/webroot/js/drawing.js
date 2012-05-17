@@ -231,7 +231,7 @@ $(document).ready(function() {
     // start by replacing the start and end coordinates in the data
     // with the centroid    
     var off_x = $('#canvas').offset().left;
-    var off_y = $('#canvas').offset().top + 150;
+    var off_y = $('#canvas').offset().top;
     
     for(var i in json.links) {
       var link = json.links[i];
@@ -263,34 +263,56 @@ $(document).ready(function() {
         
       // now, compute the entry and exit points depending upon the 
       // relative positions of the centroids
-      var vert_dist = Math.abs(start_y - end_y) - end_height;
-      var horz_dist = Math.abs(start_x - end_x) - end_width;
-      if(vert_dist < 0)
-        vert_dist = 0;
-      if(horz_dist < 0)
-        horz_dist = 0;
+
+      // keep in mind, we are drawing the arrow "backwards" - i.e.,
+      // if x increases with y, the arrow goes y --> x (and vice 
+      // versa)
+      var ecx = end_centroid.x;
+      var ecy = end_centroid.y;
+      var scx = start_centroid.x;
+      var scy = start_centroid.y;
       
-      if(vert_dist < 50) {
-        if(start_centroid.x <= end_centroid.x) {
-          start_centroid.x = start_x + start_width;
-          end_centroid.x = end_x;
-        } else {
-          start_centroid.x = start_x;
-          end_centroid.x = end_x + end_width;
-        }
-      } else {
-        if(start_centroid.y <= end_centroid.y) {
-          start_centroid.y = start_y + start_height;
-          end_centroid.y = end_y;
-        } else {
-          start_centroid.y = start_y;
-          end_centroid.y = end_y + end_height;
-        }
+      // compute the angle between the centroids
+      var angle = getAngle(scx, scy, ecx, ecy);
+      
+      // compute the angle to the corners of the box (for the end
+      // centroid)
+      var nw = getAngle(scx, scy, start_x, start_y);
+      var ne = getAngle(scx, scy, start_x + start_width, start_y);
+      var se = getAngle(scx, scy, start_x + start_width, start_y + start_height);
+      var sw = getAngle(scx, scy, start_x, start_y + start_height);
+      
+      var quad = null;
+      var start = start_centroid;
+      var end = end_centroid;
+      
+      // find the quadrant
+      if(angle >= nw && angle < ne)
+        quad = 'top';
+      else if(angle >= ne && angle < se)
+        quad = 'right';
+      else if(angle >= se && angle < sw)
+        quad = 'bottom';
+      else
+        quad = 'left';
+      
+      if(quad == 'top') {
+        start.y = start_y;
+        end.y = end_y + end_height;
+      } else if(quad == 'right') {
+        start.x = start_x + start_width;
+        end.x = end_x;
+      } else if(quad == 'bottom') {
+        start.y = start_y + start_height;
+        end.y = end_y;
+      } else if(quad == 'left') {
+        start.x = start_x;
+        end.x = end_x + end_width;
       }
       
       // update the json data
-      json.links[i].start.pos = start_centroid;
-      json.links[i].end.pos = end_centroid;
+      json.links[i].start.pos = start;
+      json.links[i].end.pos = end;
     }
     
     var link = svg.selectAll('line.link').data(json.links)
@@ -305,21 +327,22 @@ $(document).ready(function() {
       .attr('y1', function(d) { return d.start.pos.y; })
       .attr('y2', function(d) { return d.end.pos.y; })
       .attr('marker-end', function(d) { return 'url(#' + d.type + ')'; });
-
-    
-    // var link = svg.selectAll('path.link').data(json.links)
-    //   .enter().append('path')
-    //   .attr('class', function(d) { return 'link ' + d.type; })
-    //   .attr('data-start', function(d) { return d.start.id; })
-    //   .attr('data-end', function(d) { return d.end.id; })
-    //   .attr('data-type', function(d) { return d.type; })
-    //   .attr('opacity', 0.0)
-    //   .attr('d', line)
-    //   .attr('marker-end', function(d) { return 'url(#' + d.type + ')'; });
   }
   
   function clearLinks() {
     d3.selectAll('line.link').remove();
+  }
+  
+  function getAngle(x1, y1, x2, y2) {
+    // note: because y increases from top to bottom, we have to 
+    // reverse the subtraction for delta y
+    var delta_y = parseFloat(y1 - y2);
+    var delta_x = parseFloat(x1 - x2);
+    var theta = Math.atan2(delta_y, delta_x);
+    var angle = theta * 180 / Math.PI;
+    if(angle < 0)
+      angle += 360;
+    return angle;
   }
   
   function getCentroid(id) {
@@ -327,8 +350,10 @@ $(document).ready(function() {
     var entity = d3.select(selector);
     var rect = d3.select(selector + ' rect');
     var data = entity.datum();
-    var x = $(selector).offset().left;
-    var y = $(selector).offset().top;
+    var off_x = $('#canvas').offset().left;
+    var off_y = $('#canvas').offset().top;
+    var x = $(selector).offset().left - off_x;
+    var y = $(selector).offset().top - off_y;
     var w = parseInt(rect.attr('width'));
     var h = parseInt(rect.attr('height'));
     

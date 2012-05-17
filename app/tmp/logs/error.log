@@ -2259,3 +2259,17 @@
 #3 /Users/ghunt/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(EntitiesController), Object(CakeRequest), Object(CakeResponse))
 #4 /Users/ghunt/Code/cake/qme/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #5 {main}
+2012-05-17 13:13:04 Error: [MissingTableException] Table links for model Link was not found in datasource default.
+#0 /Users/glen/Dropbox/Code/cake/qme/lib/Cake/Model/Model.php(3408): Model->setSource('links')
+#1 /Users/glen/Dropbox/Code/cake/qme/lib/Cake/Model/Datasource/DboSource.php(1044): Model->getDataSource()
+#2 /Users/glen/Dropbox/Code/cake/qme/lib/Cake/Model/Model.php(2663): DboSource->read(Object(Qmodel), Array)
+#3 /Users/glen/Dropbox/Code/cake/qme/lib/Cake/Model/Datasource/DboSource.php(571): Model->find('all', Array)
+#4 /Users/glen/Dropbox/Code/cake/qme/lib/Cake/Model/Model.php(775): DboSource->query('findAllByUserId', Array, Object(Qmodel))
+#5 [internal function]: Model->__call('findAllByUserId', Array)
+#6 /Users/glen/Dropbox/Code/cake/qme/app/Controller/UsersController.php(43): Qmodel->findAllByUserId('1')
+#7 [internal function]: UsersController->dashboard()
+#8 /Users/glen/Dropbox/Code/cake/qme/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#9 /Users/glen/Dropbox/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#10 /Users/glen/Dropbox/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#11 /Users/glen/Dropbox/Code/cake/qme/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
