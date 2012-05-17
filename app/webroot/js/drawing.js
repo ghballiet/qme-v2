@@ -85,6 +85,10 @@ $(document).ready(function() {
       var cy = parseInt(item.attr('cy')) + d3.event.dy;
       var r = parseInt(item.attr('r'));
       
+      // make sure it can't get too small
+      width = width < 50 ? 50 : width;
+      height = height < 50 ? 50 : height;
+      
       // update the attributes
       item.attr('cx', cx).attr('cy', cy);
       rect.attr('height', height).attr('width', width);
