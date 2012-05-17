@@ -291,8 +291,6 @@ $(document).ready(function() {
       // update the json data
       json.links[i].start.pos = start_centroid;
       json.links[i].end.pos = end_centroid;
-      
-      console.log(json.links[i].start.pos, json.links[i].end.pos);
     }
     
     var link = svg.selectAll('line.link').data(json.links)
