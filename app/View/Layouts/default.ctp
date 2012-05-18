@@ -12,7 +12,7 @@
     <style type="text/css">
     body { padding-top: 60px; }
     </style>
-    <? echo $this->Html->css(array('http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css')); ?>
+    <? echo $this->Html->css(array('bootstrap-responsive.css')); ?>
     <? echo $this->fetch('css'); ?>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
