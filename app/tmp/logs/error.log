@@ -2311,3 +2311,43 @@
 #1 /Users/glen/Dropbox/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
 #2 /Users/glen/Dropbox/Code/cake/qme/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2012-05-20 17:53:54 Error: [MissingTableException] Table facts for model Fact was not found in datasource default.
+#0 /var/www/qme/lib/Cake/Model/Model.php(3408): Model->setSource('facts')
+#1 /var/www/qme/lib/Cake/Model/Datasource/DboSource.php(1044): Model->getDataSource()
+#2 /var/www/qme/lib/Cake/Model/Model.php(2663): DboSource->read(Object(Qmodel), Array)
+#3 /var/www/qme/lib/Cake/Model/Datasource/DboSource.php(571): Model->find('all', Array)
+#4 /var/www/qme/lib/Cake/Model/Model.php(775): DboSource->query('findAllByUserId', Array, Object(Qmodel))
+#5 /var/www/qme/app/Controller/UsersController.php(43): Model->__call('findAllByUserId', Array)
+#6 /var/www/qme/app/Controller/UsersController.php(43): Qmodel->findAllByUserId('1')
+#7 [internal function]: UsersController->dashboard()
+#8 /var/www/qme/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#9 /var/www/qme/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#10 /var/www/qme/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#11 /var/www/qme/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2012-05-20 17:54:31 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Source.name' in 'order clause'
+#0 /var/www/qme/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /var/www/qme/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Fact`.`...', Array)
+#2 /var/www/qme/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Fact`.`...', Array, Array)
+#3 /var/www/qme/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Fact`.`...', false)
+#4 /var/www/qme/lib/Cake/Model/Model.php(2663): DboSource->read(Object(AppModel), Array)
+#5 /var/www/qme/app/Controller/QmodelsController.php(87): Model->find('all', Array)
+#6 [internal function]: QmodelsController->view('mitochondrial-m...')
+#7 /var/www/qme/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(QmodelsController), Array)
+#8 /var/www/qme/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /var/www/qme/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(QmodelsController), Object(CakeRequest), Object(CakeResponse))
+#10 /var/www/qme/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-20 17:54:36 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Source.name' in 'order clause'
+#0 /var/www/qme/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /var/www/qme/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Fact`.`...', Array)
+#2 /var/www/qme/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Fact`.`...', Array, Array)
+#3 /var/www/qme/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Fact`.`...', false)
+#4 /var/www/qme/lib/Cake/Model/Model.php(2663): DboSource->read(Object(AppModel), Array)
+#5 /var/www/qme/app/Controller/QmodelsController.php(87): Model->find('all', Array)
+#6 [internal function]: QmodelsController->view('mitochondrial-m...')
+#7 /var/www/qme/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(QmodelsController), Array)
+#8 /var/www/qme/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /var/www/qme/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(QmodelsController), Object(CakeRequest), Object(CakeResponse))
+#10 /var/www/qme/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
