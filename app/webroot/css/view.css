@@ -22,5 +22,7 @@ svg .entity.stable rect{fill:#049cdb;stroke:#037fb3;}
 svg .entity.transient rect{fill:#f89406;}
 svg .link{fill:transparent;stroke-width:3;opacity:.75;}svg .link.increases{stroke:#46a546;}
 svg .link.decreases{stroke:#9d261d;}
+svg .link.does_not_change{stroke:#ffc40d;}
 svg marker#increases{fill:#46a546;}
 svg marker#decreases{fill:#9d261d;}
+svg marker#does_not_change{fill:#ffc40d;}

@@ -7,6 +7,7 @@ $this->start('scripts');
 echo $this->Html->script('d3.v2.min.js');
 echo $this->Html->script('view');
 echo $this->Html->script('drawing');
+echo $this->Html->script('edit-item');
 $this->end();
 ?>
 
@@ -71,8 +72,8 @@ foreach($links as $link) {
           $parent_id = $place['Parent']['id'];
           $parent_name = $place['Parent']['name'];
           echo '<li class="place">';
-          printf('<a href="#" data-type="places" data-id="%s">', 
-            $place_id);            
+          printf('<a href="#" data-type="places" data-id="%s" data-parent="%s" data-name="%s">', 
+            $place_id, $parent_id, $place_name);            
           echo '<span class="type">place</span> ';
           printf('<span class="name">%s</span>', $place_name);
           if($parent_id != null) {
@@ -97,8 +98,8 @@ foreach($links as $link) {
           $place_id = $entity['Place']['id'];
           $place_name = $entity['Place']['name'];
           echo '<li class="entity">';
-          printf('<a href="#" data-type="entities" data-id="%s">',
-            $entity_id);
+          printf('<a href="#" data-id="%s" data-name="%s" data-type="%s" data-place-id="%s">',
+            $entity_id, $entity_name, $entity_type, $place_id);
           printf('<span class="name">%s</span>', $entity_name);
           echo ' in ';
           printf('<span class="location">%s</span>', $place_name);
@@ -175,6 +176,38 @@ foreach($links as $link) {
   </div>
 </div>
 
+<!-- edit place modal -->
+<div class="modal fade" id="edit_place">
+  <div class="modal-header">
+    <button class="close" data-dismiss="modal">&times;</button>
+    <h3>Edit Place</h3>
+  </div>
+  <div class="modal-body">
+    <?
+    echo $this->BootstrapForm->create('Place',
+      array('controller'=>'places', 'action'=>'update'));
+    echo $this->BootstrapForm->input('id', array('type'=>'hidden'));
+    echo $this->BootstrapForm->input('name', array('label'=>false));
+    if(isset($places) && $places != null) {
+      echo $this->BootstrapForm->input('parent_id',
+        array('options'=>$place_list, 'label'=>'in'));
+    }
+    echo $this->BootstrapForm->input('qmodel_id',
+      array('type'=>'hidden', 'value'=>$model['Qmodel']['id']));
+    echo '</form>';
+    ?>    
+  </div>
+  <div class="modal-footer">
+    <a href="#" data-dismiss="modal" class="btn">Close</a>
+    <?
+    echo $this->Html->link('Delete', array('controller'=>'places', 
+      'action'=>'delete'), array('class'=>'btn btn-danger btn-delete'),
+      'Are you sure you want to delete this place? This cannot be undone.');
+    ?>
+    <a href="#" data-dismiss="modal" class="btn btn-primary">Save Changes</a>
+  </div>
+</div>
+
 <!-- add entity modal -->
 <div class="modal fade" id="add_entity">
   <div class="modal-header">
@@ -197,6 +230,38 @@ foreach($links as $link) {
   </div>
   <div class="modal-footer">
     <a href="#" data-dismiss="modal" class="btn">Close</a>
+    <a href="#" data-dismiss="modal" class="btn btn-primary">Save Changes</a>
+  </div>
+</div>
+
+<!-- edit entity modal -->
+<div class="modal fade" id="edit_entity">
+  <div class="modal-header">
+    <button class="close" data-dismiss="modal">&times;</button>
+    <h3>Edit Entity</h3>
+  </div>
+  <div class="modal-body">
+    <?
+    echo $this->BootstrapForm->create('Entity',
+      array('controller'=>'entity', 'action'=>'update'));
+    echo $this->BootstrapForm->input('id', array('type'=>'hidden'));
+    echo $this->BootstrapForm->input('name', array('label'=>false));
+    echo $this->BootstrapForm->input('place_id',
+      array('options'=>$place_list, 'label'=>'in'));
+    echo $this->BootstrapForm->input('type', 
+      array('options'=>$entity_types, 'label'=>'is'));
+    echo $this->BootstrapForm->input('qmodel_id',
+      array('type'=>'hidden', 'value'=>$model['Qmodel']['id']));
+    echo '</form>';
+    ?>    
+  </div>
+  <div class="modal-footer">
+    <a href="#" data-dismiss="modal" class="btn">Close</a>
+    <?
+    echo $this->Html->link('Delete', array('controller'=>'entity', 
+      'action'=>'delete'), array('class'=>'btn btn-danger btn-delete'),
+      'Are you sure you want to delete this entity? This cannot be undone.');
+    ?>
     <a href="#" data-dismiss="modal" class="btn btn-primary">Save Changes</a>
   </div>
 </div>

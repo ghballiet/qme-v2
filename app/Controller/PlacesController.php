@@ -26,10 +26,24 @@ class PlacesController extends AppController {
     $this->layout = 'ajax';
     if($this->request->is('post') &&
       $place = $this->Place->save($this->request->data)) {
-      print_r($place);
+      $model = $this->Place->Qmodel->findById($place['Place']['qmodel_id']);
+      $short_name = $model['Qmodel']['short_name'];
+      $this->redirect(array('controller'=>'qmodels',
+        'action'=>'view', 'short_name'=>$short_name));
     } else {
       echo 'FAILURE. :(';
     }
+  }
+  
+  public function delete($id = null) {
+    $this->Place->id = $id;
+    $place = $this->Place->read();
+    $model = $this->Place->Qmodel->findById($place['Place']['qmodel_id']);
+    $short_name = $model['Qmodel']['short_name'];
+    
+    $this->Place->delete($id);
+    $this->redirect(array('controller'=>'qmodels', 'action'=>'view',
+      'short_name'=>$short_name));
   }
 }
 ?>

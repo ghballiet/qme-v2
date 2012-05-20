@@ -216,17 +216,17 @@ $(document).ready(function() {
     // draws the triangles used as endpoints for lines
     // markers don't inherit styles, so we have to add one per type
     svg.append('defs').selectAll('marker')
-      .data(['increases', 'decreases', 'does-not-change'])
+      .data(['increases', 'decreases', 'does_not_change'])
       .enter().append('marker')
         .attr('id', String)
-        .attr('viewBox', '0 -5 10 10')
+        .attr('viewBox', '-8 -5 2 10')
         .attr('refX', 0)
         .attr('refY', 0)
         .attr('markerWidth', 4)
         .attr('markerHeight', 4)
         .attr('orient', 'auto')
       .append('path')
-        .attr('d', 'M0,-5L10,0L0,5');
+        .attr('d', 'M-8,-5L2,0L-8,5');
   }
   
   function drawLinks() {

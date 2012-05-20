@@ -44,6 +44,8 @@ class QmodelsController extends AppController {
         $name = $place['Place']['name'];
       $place_list[$place['Place']['id']] = $name;
     }
+    $place_list[0] = '';
+    ksort($place_list);
     // $place_list = $this->Qmodel->Place->find('list', $place_options);
     
     // ---- entities ----

@@ -18,7 +18,10 @@ class EntitiesController extends AppController {
     $this->layout = 'ajax';
     if($this->request->is('post') &&
       $entity = $this->Entity->save($this->request->data)) {
-      print_r($entity);
+      $place = $this->Entity->Place->findById($entity['Entity']['place_id']);
+      $short_name = $place['Qmodel']['short_name'];
+      $this->redirect(array('controller'=>'qmodels', 'action'=>'view', 
+        'short_name'=>$short_name));
     } else {
       echo 'FAILURE :(';
     }

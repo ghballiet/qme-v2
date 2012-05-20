@@ -33,9 +33,13 @@ Router::connect('/models/:action/:short_name/*',
 Router::connect('/models/:action/*', array('controller'=>'qmodels'));
 Router::connect('/update_place/*', array('controller'=>'places', 'action'=>'update'));
 Router::connect('/update_entity/*', array('controller'=>'entities', 'action'=>'update'));
+Router::connect('/update_link/*', array('controller'=>'links', 'action'=>'update'));
 Router::connect('/add_place/*', array('controller'=>'places', 'action'=>'create'));
 Router::connect('/add_entity/*', array('controller'=>'entities', 'action'=>'create'));
 Router::connect('/add_link/*', array('controller'=>'links', 'action'=>'create'));
+Router::connect('/delete_place/*', array('controller'=>'places', 'action'=>'delete'));
+Router::connect('/delete_entity/*', array('controller'=>'entity', 'action'=>'delete'));
+Router::connect('/delete_link/*', array('controller'=>'links', 'action'=>'delete'));
 Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 Router::connect('/:action/*', array('controller'=>'users'));
 
