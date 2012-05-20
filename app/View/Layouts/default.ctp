@@ -85,7 +85,7 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container main-container">
       <? echo $this->Session->flash(); ?>
       <? echo $this->fetch('content'); ?>
 

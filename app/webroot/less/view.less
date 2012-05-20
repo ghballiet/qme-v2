@@ -1,7 +1,7 @@
 @import 'variables';
 @import 'mixins';
 
-div.page-header {
+div.main-container {
   margin-top: 36px;
 }
 
@@ -45,7 +45,7 @@ div.left ul.nav {
     span.name, span.location { color: @gray; }
   }
   
-  li.link {
+  li.link, li.fact {
     span.stable { color: @blue; }
     span.transient { color: @orange; }
     span.increases { color: @green; }
@@ -90,7 +90,7 @@ svg {
     fill: @orange;
   }
   
-  .link {
+  .link, .fact {
     fill: transparent; 
     stroke-width: 3;
     opacity: .75;

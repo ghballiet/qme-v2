@@ -2,7 +2,7 @@
 class Qmodel extends AppModel {
   public $name = 'Qmodel';
   public $belongsTo = 'User';
-  public $hasMany = array('Place', 'Link');
+  public $hasMany = array('Place', 'Link', 'Fact');
   
   public $validate = array(
     'short_name' => array(

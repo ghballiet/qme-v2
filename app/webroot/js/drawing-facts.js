@@ -1,4 +1,8 @@
 $(document).ready(function() {
+  facts();
+});
+
+var facts = function() {
   var svg = null;
   
   function startSaving() {
@@ -138,7 +142,7 @@ $(document).ready(function() {
     // draw the shapes
     drawPlaces();
     drawEntities();
-    drawMarkers();
+    // drawMarkers();
     drawLinks();
   }
   
@@ -212,31 +216,14 @@ $(document).ready(function() {
     });
   }
   
-  function drawMarkers() {
-    // draws the triangles used as endpoints for lines
-    // markers don't inherit styles, so we have to add one per type
-    svg.append('defs').selectAll('marker')
-      .data(['increases', 'decreases', 'does_not_change'])
-      .enter().append('marker')
-        .attr('id', String)
-        .attr('viewBox', '-8 -5 2 10')
-        .attr('refX', 0)
-        .attr('refY', 0)
-        .attr('markerWidth', 4)
-        .attr('markerHeight', 4)
-        .attr('orient', 'auto')
-      .append('path')
-        .attr('d', 'M-8,-5L2,0L-8,5');
-  }
-  
   function drawLinks() {
     // start by replacing the start and end coordinates in the data
     // with the centroid    
-    var off_x = $('#canvas').offset().left;
-    var off_y = $('#canvas').offset().top;
+    var off_x = $('#facts').offset().left;
+    var off_y = $('#facts').offset().top;
     
-    for(var i in json.links) {
-      var link = json.links[i];
+    for(var i in json.facts) {
+      var link = json.facts[i];
       var start_id = link.start.id;
       var end_id = link.end.id;
       var start_centroid = getCentroid(start_id);
@@ -313,13 +300,13 @@ $(document).ready(function() {
       }
       
       // update the json data
-      json.links[i].start.pos = start;
-      json.links[i].end.pos = end;
+      json.facts[i].start.pos = start;
+      json.facts[i].end.pos = end;
     }
     
-    var link = svg.selectAll('line.link').data(json.links)
+    var link = svg.selectAll('line.fact').data(json.facts)
       .enter().append('line')
-      .attr('class', function(d) { return 'link ' + d.type; })
+      .attr('class', function(d) { return 'fact ' + d.type; })
       .attr('data-start', function(d) { return d.start.id; })
       .attr('data-start', function(d) { return d.start.id; })
       .attr('data-end', function(d) { return d.end.id; })
@@ -332,7 +319,7 @@ $(document).ready(function() {
   }
   
   function clearLinks() {
-    svg.selectAll('line.link').remove();
+    svg.selectAll('line.fact').remove();
   }
   
   function getAngle(x1, y1, x2, y2) {
@@ -352,8 +339,8 @@ $(document).ready(function() {
     var entity = svg.select(selector);
     var rect = svg.select(selector + ' rect');
     var data = entity.datum();
-    var off_x = $('#canvas').offset().left;
-    var off_y = $('#canvas').offset().top;
+    var off_x = $('#facts').offset().left;
+    var off_y = $('#facts').offset().top;
     var x = $(selector).offset().left - off_x;
     var y = $(selector).offset().top - off_y;
     var w = parseInt(rect.attr('width'));
@@ -366,4 +353,4 @@ $(document).ready(function() {
   }
   
   init();
-});
+}

@@ -7,7 +7,7 @@ $this->start('scripts');
 echo $this->Html->script('d3.v2.min.js');
 echo $this->Html->script('view');
 echo $this->Html->script('drawing');
-echo $this->Html->script('drawing-facts');
+// echo $this->Html->script('drawing-facts');
 echo $this->Html->script('edit-item');
 $this->end();
 ?>
@@ -43,6 +43,15 @@ foreach($links as $link) {
   $l = $link['Link'];
   printf("    { id: %d, start: { id: %d, pos: {} }, end: { id: %d, pos: {} }, type: '%s'},\n",
     $l['id'], $l['target_id'], $l['source_id'], $l['type']);
+}
+?>
+  ];
+  json.facts = [
+<?
+foreach($facts as $fact) {
+  $f = $fact['Fact'];
+  printf("    { id: %d, start: { id: %d, pos: {} }, end: { id: %d, pos: {} }, type: '%s'},\n",
+    $f['id'], $f['target_id'], $f['source_id'], $f['type']);
 }
 ?>
   ];
@@ -140,6 +149,34 @@ foreach($links as $link) {
         }
       } else {
         echo '<li><div class="alert alert-info">No hypotheses have been created.</div></li>'; 
+      }
+      ?>
+      <li class="divider"></li>
+      <li class="nav-header">Empirical Facts</li>
+      <?
+      if($facts != null) {
+        foreach($facts as $fact) {
+          $fact_id = $fact['Fact']['id'];
+          $fact_type = $fact['Fact']['type'];
+          $source_id = $fact['Source']['id'];
+          $source_name = $entity_list[$source_id];
+          $source_type = $fact['Source']['type'];
+          $target_id = $fact['Target']['id'];
+          $target_name = $entity_list[$target_id];
+          $target_type = $fact['Target']['type'];
+          echo '<li class="fact">';
+          printf('<a href="#" data-type="links" data-id="%s">', $fact_id);
+          printf('<span class="source %s">%s</span>', $source_type,
+            $source_name);
+          printf(' <span class="type %s">%s</span>', $fact_type, $fact_type);
+          echo ' with ';
+          printf('<span class="target %s">%s</span>', $target_type,
+            $target_name);
+          echo '</a>';
+          echo '</li>';
+        }
+      } else {
+        echo '<li><div class="alert alert-info">No empirical facts have been created.</div></li>'; 
       }
       ?>
     </ul>
@@ -299,6 +336,33 @@ foreach($links as $link) {
   </div>
 </div>
 
+<!-- add fact modal -->
+<div class="modal fade" id="add_fact">
+  <div class="modal-header">
+    <button class="close" data-dismiss="modal">&times;</button>
+    <h3>Add a New Empirical Fact</h3>
+  </div>
+  <div class="modal-body">
+    <?
+    echo $this->BootstrapForm->create('Fact',
+      array('controller'=>'facts', 'action'=>'create'));
+    echo $this->BootstrapForm->input('source_id', 
+      array('options'=>$entity_list, 'label'=>''));
+    echo $this->BootstrapForm->input('type',
+      array('options'=>$link_types, 'label'=>''));
+    echo $this->BootstrapForm->input('target_id', 
+      array('options'=>$entity_list, 'label'=>'with'));
+    echo $this->BootstrapForm->input('qmodel_id',
+      array('type'=>'hidden', 'value'=>$model['Qmodel']['id']));
+    echo '</form>';
+    ?>    
+  </div>
+  <div class="modal-footer">
+    <a href="#" data-dismiss="modal" class="btn">Close</a>
+    <a href="#" data-dismiss="modal" class="btn btn-primary">Save Changes</a>
+  </div>
+</div>
+
 <!-- navbar at top -->
 <div class="subnav subnav-fixed">
   <div class="container">
@@ -306,6 +370,7 @@ foreach($links as $link) {
       <li><a href="#add_place" data-toggle="modal">Add Place</a></li>
       <li><a href="#add_entity" data-toggle="modal">Add Entity</a></li>
       <li><a href="#add_link" data-toggle="modal">Add Hypothesis</a></li>
+      <li><a href="#add_fact" data-toggle="modal">Add Empirical Fact</a></li>
       <li><a href="#" class="toggle_text">Hide Text</a></li>
       <li><a href="#" class="toggle_model">Hide Graphics</a></li>
       <li><a href="#" class="toggle_facts">Show Facts</a></li>

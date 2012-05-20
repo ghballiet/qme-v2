@@ -78,6 +78,18 @@ class QmodelsController extends AppController {
       'decreases' => 'decreases',
       'does_not_change' => 'does not change'
     );
+    
+    // ---- facts ----
+    $fact_options = array(
+      'conditions'=>array('Fact.qmodel_id'=>$model_id),
+      'order'=>array('Source.name', 'Target.name')
+    );
+    $facts = $this->Qmodel->Fact->find('all', $fact_options);
+    $fact_types = array(
+      'increases' => 'increases',
+      'decreases' => 'decreases',
+      'does_not_change' => 'does not change'      
+    );
 
     $this->set('model', $model);
     $this->set('places', $places);
@@ -87,6 +99,8 @@ class QmodelsController extends AppController {
     $this->set('entity_types', $entity_types);
     $this->set('links', $links);
     $this->set('link_types', $link_types);
+    $this->set('facts', $facts);
+    $this->set('fact_types', $fact_types);
   }
 }
 ?>
