@@ -180,7 +180,7 @@ $(document).ready(function() {
   }
   
   function drawEntities() {
-    var entity_width = 100;
+    var entity_width = 150;
     var entity_height = 30;
 
     var entity = svg.selectAll('g.entitiy').data(json.entities)
