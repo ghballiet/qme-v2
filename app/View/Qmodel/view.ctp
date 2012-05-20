@@ -7,6 +7,7 @@ $this->start('scripts');
 echo $this->Html->script('d3.v2.min.js');
 echo $this->Html->script('view');
 echo $this->Html->script('drawing');
+echo $this->Html->script('drawing-facts');
 echo $this->Html->script('edit-item');
 $this->end();
 ?>
@@ -142,6 +143,11 @@ foreach($links as $link) {
       }
       ?>
     </ul>
+  </div>
+  
+  <!-- observations -->
+  <div class="span6 facts hidden">
+    <div id="facts"></div>
   </div>
   
   <!-- right -->
@@ -302,6 +308,7 @@ foreach($links as $link) {
       <li><a href="#add_link" data-toggle="modal">Add Hypothesis</a></li>
       <li><a href="#" class="toggle_text">Hide Text</a></li>
       <li><a href="#" class="toggle_model">Hide Graphics</a></li>
+      <li><a href="#" class="toggle_facts">Show Facts</a></li>
     </ul>    
   </div>
 </div>

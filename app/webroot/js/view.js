@@ -7,28 +7,61 @@ $(document).ready(function() {
   $('.toggle_text').toggle(function(e) {
     e.preventDefault();
     // hide the text
-    $('.right').removeClass('span9').addClass('span12');    
-    $('.left').addClass('hidden');
+    $('.right').setWidth(12);
+    $('.left').hideDiv();
     $(this).html('Show Text');
   }, function(e) {
     e.preventDefault();
     // show the text
-    $('.right').removeClass('span12').addClass('span9');    
-    $('.left').removeClass('hidden');
+    $('.right').setWidth(9);
+    $('.left').setWidth(3).showDiv();
     $(this).html('Hide Text');
   });
   
   $('.toggle_model').toggle(function(e) {
     e.preventDefault();
     // hide the graphics
-    $('.left').removeClass('span3').addClass('span12');
-    $('.right').addClass('hidden');
+    $('.left').setWidth(12);
+    $('.right').hideDiv();
     $(this).html('Show Graphics');
   }, function(e) {
     e.preventDefault();
     // show the graphics
-    $('.left').removeClass('span12').addClass('span3');
-    $('.right').removeClass('hidden');
+    $('.left').setWidth(3);
+    $('.right').setWidth(9).showDiv();
     $(this).html('Hide Graphics');
   });
+  
+  $('.toggle_facts').toggle(function(e) {
+    e.preventDefault();
+    // show facts, hide text, split between model and facts
+    $('.left').hideDiv();
+    $('.facts').setWidth(6).showDiv();
+    $('.right').setWidth(6);
+    $(this).html('Hide Facts');
+  }, function(e) {
+    e.preventDefault();
+    $('.left').setWidth(3).showDiv();
+    $('.facts').hideDiv();
+    $('.right').setWidth(9);
+    $(this).html('Show Facts');
+  });
+  
+  $.fn.setWidth = function(width) {
+    var i = 0;
+    for(i=1; i<=12; i++)
+      $(this).removeClass('span' + i);
+    $(this).addClass('span' + width.toString());
+    return $(this);
+  }
+  
+  $.fn.showDiv = function() {
+    $(this).removeClass('hidden');
+    return $(this);
+  }
+  
+  $.fn.hideDiv = function() {
+    $(this).addClass('hidden');
+    return $(this);
+  }
 });

@@ -2,13 +2,13 @@ $(document).ready(function() {
   var svg = null;
   
   function startSaving() {
-    d3.select('circle.saving').transition()
+    svg.select('circle.saving').transition()
       .duration(250)
       .attr('opacity', 1.0);
   }
   
   function endSaving() {
-    d3.select('circle.saving').transition()
+    svg.select('circle.saving').transition()
       .duration(250)
       .attr('opacity', 0.0);
   }
@@ -75,8 +75,8 @@ $(document).ready(function() {
       // select the right items
       var item = d3.select(this);
       var group = item.attr('group');
-      var rect = d3.select('.' + group + ' rect');
-      var text = d3.select('.' + group + ' text');
+      var rect = svg.select('.' + group + ' rect');
+      var text = svg.select('.' + group + ' text');
 
       // compute the new values
       var width = parseInt(rect.attr('width')) + d3.event.dx;
@@ -95,8 +95,8 @@ $(document).ready(function() {
     .on('dragend', function(d, i) {
       var item = d3.select(this);
       var group_id = item.attr('group');
-      var group = d3.select('.' + group);
-      var rect = d3.select('.' + group_id + ' rect');
+      var group = svg.select('.' + group);
+      var rect = svg.select('.' + group_id + ' rect');
       var height = parseInt(rect.attr('height'));
       var width = parseInt(rect.attr('width'));
       var data = rect.datum();
@@ -247,8 +247,8 @@ $(document).ready(function() {
       var end_selector = '.entity[data-id="' + end_id + '"]';
       var start_node = $(start_selector);
       var end_node = $(end_selector);
-      var start_shape = d3.select(start_selector + ' rect');
-      var end_shape = d3.select(end_selector + ' rect');
+      var start_shape = svg.select(start_selector + ' rect');
+      var end_shape = svg.select(end_selector + ' rect');
       var start_x = start_node.offset().left - off_x;
       var start_y = start_node.offset().top - off_y;
       var end_x = end_node.offset().left - off_x;
@@ -332,7 +332,7 @@ $(document).ready(function() {
   }
   
   function clearLinks() {
-    d3.selectAll('line.link').remove();
+    svg.selectAll('line.link').remove();
   }
   
   function getAngle(x1, y1, x2, y2) {
@@ -349,8 +349,8 @@ $(document).ready(function() {
   
   function getCentroid(id) {
     var selector = '.entity[data-id="' + id + '"]';
-    var entity = d3.select(selector);
-    var rect = d3.select(selector + ' rect');
+    var entity = svg.select(selector);
+    var rect = svg.select(selector + ' rect');
     var data = entity.datum();
     var off_x = $('#canvas').offset().left;
     var off_y = $('#canvas').offset().top;

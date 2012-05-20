@@ -1,0 +1,1116 @@
+
+; in: LAMBDA NIL
+;     (ADD-NOTE REST)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ADD-NOTE
+
+;     (ASK-QUERY REST)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASK-QUERY
+
+;     (CREATE-CLAIM REST)
+; 
+; caught STYLE-WARNING:
+;   undefined function: CREATE-CLAIM
+
+;     (CREATE-FACT REST)
+; 
+; caught STYLE-WARNING:
+;   undefined function: CREATE-FACT
+
+;     (CREATE-GROUP REST)
+; 
+; caught STYLE-WARNING:
+;   undefined function: CREATE-GROUP
+
+;     (CREATE-PLACE REST)
+; 
+; caught STYLE-WARNING:
+;   undefined function: CREATE-PLACE
+
+;     (CREATE-QUANTITY REST 'TRANSIENT)
+; 
+; caught STYLE-WARNING:
+;   undefined function: CREATE-QUANTITY
+
+;     (DISABLE-CONTENT REST)
+; 
+; caught STYLE-WARNING:
+;   undefined function: DISABLE-CONTENT
+
+;     (ENABLE-CONTENT REST)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ENABLE-CONTENT
+
+;     #'LOAD-CONTENT
+; 
+; caught STYLE-WARNING:
+;   undefined function: LOAD-CONTENT
+
+;     (PROMPT-AND-INPUT)
+; 
+; caught STYLE-WARNING:
+;   undefined function: PROMPT-AND-INPUT
+
+;     (PROVIDE-HELP REST)
+; 
+; caught STYLE-WARNING:
+;   undefined function: PROVIDE-HELP
+
+;     (REMOVE-CONTENT REST)
+; 
+; caught STYLE-WARNING:
+;   undefined function: REMOVE-CONTENT
+
+;     (SAVE-CONTENT REST)
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAVE-CONTENT
+
+;     (SAY-NOT-COMMAND COMMAND)
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAY-NOT-COMMAND
+
+;     (SHOW-CONTENT REST)
+; 
+; caught STYLE-WARNING:
+;   undefined function: SHOW-CONTENT
+
+;     (SHOW-EXPLAIN REST)
+; 
+; caught STYLE-WARNING:
+;   undefined function: SHOW-EXPLAIN
+
+;     (SHOW-PREDICT REST)
+; 
+; caught STYLE-WARNING:
+;   undefined function: SHOW-PREDICT
+
+;     (UNCREATE-GROUP REST)
+; 
+; caught STYLE-WARNING:
+;   undefined function: UNCREATE-GROUP
+; 
+; compilation unit finished
+;   Undefined functions:
+;     ADD-NOTE ASK-QUERY CREATE-CLAIM CREATE-FACT CREATE-GROUP CREATE-PLACE CREATE-QUANTITY DISABLE-CONTENT ENABLE-CONTENT LOAD-CONTENT PROMPT-AND-INPUT PROVIDE-HELP REMOVE-CONTENT SAVE-CONTENT SAY-NOT-COMMAND SHOW-CONTENT SHOW-EXPLAIN SHOW-PREDICT UNCREATE-GROUP
+;   caught 19 STYLE-WARNING conditions
+
+;     (SAY COMMAND)
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAY
+
+;     (SAYCR " fact, show, does, predict, explain, disable, enable, remove, load,")
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAYCR
+; 
+; compilation unit finished
+;   Undefined functions:
+;     SAY SAYCR
+;   caught 2 STYLE-WARNING conditions
+
+;     (GEN-NAME 'L)
+; 
+; caught STYLE-WARNING:
+;   undefined function: GEN-NAME
+
+;     (GET-PLACE IN PLACES*)
+; 
+; caught STYLE-WARNING:
+;   undefined function: GET-PLACE
+
+;     (SAY "Place specifications take the form: ")
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAY
+
+;     (SAY-NOT-DECLARED IN 'PLACE)
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAY-NOT-DECLARED
+
+;     (SAYCR "<new-place> (in the <existing-place>)")
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAYCR
+
+;     (SHOW-PLACE (CAR PLACES*))
+; 
+; caught STYLE-WARNING:
+;   undefined function: SHOW-PLACE
+; 
+; compilation unit finished
+;   Undefined functions:
+;     GEN-NAME GET-PLACE SAY SAY-NOT-DECLARED SAYCR SHOW-PLACE
+;   caught 6 STYLE-WARNING conditions
+
+;     (SAYCR "You must declare the ")
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAYCR
+; 
+; compilation unit finished
+;   Undefined function:
+;     SAYCR
+;   caught 1 STYLE-WARNING condition
+
+;     (GEN-NAME 'Q)
+; 
+; caught STYLE-WARNING:
+;   undefined function: GEN-NAME
+
+;     (SETQ IN-ID (GET-PLACE IN PLACES*))
+; 
+; caught WARNING:
+;   undefined variable: IN-ID
+
+;     (SAY-QUANTITY-FORMAT)
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAY-QUANTITY-FORMAT
+
+;     (SAYCR "You must specify at least one place where the
+;                      quantity occurs.")
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAYCR
+
+;     (SHOW-QUANTITY (CAR QUANTITIES*))
+; 
+; caught STYLE-WARNING:
+;   undefined function: SHOW-QUANTITY
+; 
+; compilation unit finished
+;   Undefined functions:
+;     GEN-NAME SAY-QUANTITY-FORMAT SAYCR SHOW-QUANTITY
+;   Undefined variable:
+;     IN-ID
+;   caught 1 WARNING condition
+;   caught 4 STYLE-WARNING conditions
+
+;     (SAY "Quantity specifications take the form: ")
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAY
+
+;     (SAYCR "<quantity> (in the <place1> (and in the <place2> ...))")
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAYCR
+; 
+; compilation unit finished
+;   Undefined functions:
+;     SAY SAYCR
+;   caught 2 STYLE-WARNING conditions
+
+;     (GEN-NAME 'C)
+; 
+; caught STYLE-WARNING:
+;   undefined function: GEN-NAME
+
+;     (GET-CLAIM-BY-ID TO-NAME CLAIMS*)
+; 
+; caught STYLE-WARNING:
+;   undefined function: GET-CLAIM-BY-ID
+
+;     (GET-QUANTITIES (CAR CLAIM) QUANTITIES*)
+; 
+; caught STYLE-WARNING:
+;   undefined function: GET-QUANTITIES
+
+;     (GET-QUANTITY-IN TO-NAME TO-LOC)
+; 
+; caught STYLE-WARNING:
+;   undefined function: GET-QUANTITY-IN
+
+;     (SAY " to occur in the ")
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAY
+
+;     (SAY-CLAIM-FORMAT (CAR CLAIM))
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAY-CLAIM-FORMAT
+
+;     (SHOW-CLAIM (CAR CLAIMS*))
+; 
+; caught STYLE-WARNING:
+;   undefined function: SHOW-CLAIM
+; 
+; compilation unit finished
+;   Undefined functions:
+;     GEN-NAME GET-CLAIM-BY-ID GET-QUANTITIES GET-QUANTITY-IN SAY SAY-CLAIM-FORMAT SHOW-CLAIM
+;   caught 7 STYLE-WARNING conditions
+
+;     (GEN-NAME 'F)
+; 
+; caught STYLE-WARNING:
+;   undefined function: GEN-NAME
+
+;     (GET-QUANTITIES (CAR FACT) QUANTITIES*)
+; 
+; caught STYLE-WARNING:
+;   undefined function: GET-QUANTITIES
+
+;     (GET-QUANTITY-IN TO-NAME TO-LOC)
+; 
+; caught STYLE-WARNING:
+;   undefined function: GET-QUANTITY-IN
+
+;     (SAY "You have not declared ")
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAY
+
+;     (SAY-FACT-FORMAT (CAR FACT))
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAY-FACT-FORMAT
+
+;     (SHOW-FACT (CAR FACTS*))
+; 
+; caught STYLE-WARNING:
+;   undefined function: SHOW-FACT
+; 
+; compilation unit finished
+;   Undefined functions:
+;     GEN-NAME GET-QUANTITIES GET-QUANTITY-IN SAY SAY-FACT-FORMAT SHOW-FACT
+;   caught 6 STYLE-WARNING conditions
+
+;     (GET-PLACE-NAME-BY-ID (QUANTITY-IN NEXT) PLACES*)
+; 
+; caught STYLE-WARNING:
+;   undefined function: GET-PLACE-NAME-BY-ID
+
+;     (GET-QUANTITIES QUANTITY QUANTITIES*)
+; 
+; caught STYLE-WARNING:
+;   undefined function: GET-QUANTITIES
+; 
+; compilation unit finished
+;   Undefined functions:
+;     GET-PLACE-NAME-BY-ID GET-QUANTITIES
+;   caught 2 STYLE-WARNING conditions
+
+;     (SAY "Claims take the form: ")
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAY
+
+;     (SAYCR "<quantity1> in the <location1> increases (decreases)")
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAYCR
+; 
+; compilation unit finished
+;   Undefined functions:
+;     SAY SAYCR
+;   caught 2 STYLE-WARNING conditions
+
+;     (SAY "Facts take the form: ")
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAY
+
+;     (SAYCR "<quantity1> in the <location1> increases/decreases/does-not-change")
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAYCR
+; 
+; compilation unit finished
+;   Undefined functions:
+;     SAY SAYCR
+;   caught 2 STYLE-WARNING conditions
+
+;     (GET-STRUCT-BY-ID LATEST-ID*)
+; 
+; caught STYLE-WARNING:
+;   undefined function: GET-STRUCT-BY-ID
+; 
+; compilation unit finished
+;   Undefined function:
+;     GET-STRUCT-BY-ID
+;   caught 1 STYLE-WARNING condition
+
+;     (GET-CLAIM-BY-ID ID CLAIMS*)
+; 
+; caught STYLE-WARNING:
+;   undefined function: GET-CLAIM-BY-ID
+
+;     (GET-FACT-BY-ID ID FACTS*)
+; 
+; caught STYLE-WARNING:
+;   undefined function: GET-FACT-BY-ID
+
+;     (GET-PLACE-BY-ID ID PLACES*)
+; 
+; caught STYLE-WARNING:
+;   undefined function: GET-PLACE-BY-ID
+
+;     (GET-QUANTITY-BY-ID ID QUANTITIES*)
+; 
+; caught STYLE-WARNING:
+;   undefined function: GET-QUANTITY-BY-ID
+; 
+; compilation unit finished
+;   Undefined functions:
+;     GET-CLAIM-BY-ID GET-FACT-BY-ID GET-PLACE-BY-ID GET-QUANTITY-BY-ID
+;   caught 4 STYLE-WARNING conditions
+
+;     (SHOW-CLAIMS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: SHOW-CLAIMS
+
+;     (SHOW-FACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: SHOW-FACTS
+
+;     (SHOW-PLACES)
+; 
+; caught STYLE-WARNING:
+;   undefined function: SHOW-PLACES
+
+;     (SHOW-PREDICTIONS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: SHOW-PREDICTIONS
+
+;     (SHOW-QUANTITIES)
+; 
+; caught STYLE-WARNING:
+;   undefined function: SHOW-QUANTITIES
+; 
+; compilation unit finished
+;   Undefined functions:
+;     SHOW-CLAIMS SHOW-FACTS SHOW-PLACES SHOW-PREDICTIONS SHOW-QUANTITIES
+;   caught 5 STYLE-WARNING conditions
+
+;     (SHOW-PLACE P)
+; 
+; caught STYLE-WARNING:
+;   undefined function: SHOW-PLACE
+; 
+; compilation unit finished
+;   Undefined function:
+;     SHOW-PLACE
+;   caught 1 STYLE-WARNING condition
+
+;     (SHOW-QUANTITY E)
+; 
+; caught STYLE-WARNING:
+;   undefined function: SHOW-QUANTITY
+; 
+; compilation unit finished
+;   Undefined function:
+;     SHOW-QUANTITY
+;   caught 1 STYLE-WARNING condition
+
+;     (SHOW-CLAIM C)
+; 
+; caught STYLE-WARNING:
+;   undefined function: SHOW-CLAIM
+; 
+; compilation unit finished
+;   Undefined function:
+;     SHOW-CLAIM
+;   caught 1 STYLE-WARNING condition
+
+;     (SHOW-FACT F)
+; 
+; caught STYLE-WARNING:
+;   undefined function: SHOW-FACT
+; 
+; compilation unit finished
+;   Undefined function:
+;     SHOW-FACT
+;   caught 1 STYLE-WARNING condition
+
+;     (SHOW-PREDICTION P)
+; 
+; caught STYLE-WARNING:
+;   undefined function: SHOW-PREDICTION
+; 
+; compilation unit finished
+;   Undefined function:
+;     SHOW-PREDICTION
+;   caught 1 STYLE-WARNING condition
+; in: LAMBDA NIL
+;     (LET ((TO-NAME NIL)
+;           (TO-LOC NIL)
+;           (TO-ENT NIL)
+;           (FROM-NAME NIL)
+;           (FROM-LOC NIL)
+;           (FROM-ENT NIL)
+;           (DIRECTION NIL)
+;           (ID NIL)
+;           (ERROR NIL))
+;       (SETQ TO-NAME (POP QUESTION))
+;       (COND ((AND (EQ # 'IN) (EQ # 'THE)) (SETQ TO-LOC #) (SETQ QUESTION #)))
+;       (COND
+;        ((OR (EQ # 'VARY) (EQ # 'CHANGE) (EQ # 'INCREASE) (EQ # 'DECREASE))
+;         (POP QUESTION))
+;        (T (SAY-QUERY-FORMAT (CAR QUESTION)) (SETQ ERROR T)))
+;       (COND ((AND (NULL ERROR) (EQ # 'WITH)) (POP QUESTION))
+;             ((NULL ERROR) (SAY-QUERY-FORMAT (CAR QUESTION)) (SETQ ERROR T)))
+;       (SETQ FROM-NAME (POP QUESTION))
+;       (COND
+;        ((AND (NULL ERROR) (EQ # 'IN) (EQ # 'THE)) (SETQ FROM-LOC #)
+;         (SETQ QUESTION #) (COND (# #))))
+;       (COND
+;        ((AND (NULL ERROR) (NOT #)) (SAY-QUERY-FORMAT (CAR QUESTION))
+;         (SETQ ERROR T)))
+;       (SETQ TO-ENT (GET-QUANTITY-IN TO-NAME TO-LOC))
+;       (SETQ FROM-ENT (GET-QUANTITY-IN FROM-NAME FROM-LOC))
+;       (COND
+;        ((AND (NULL ERROR) (NULL TO-ENT)) (SAY "You have not declared ")
+;         (PRINC TO-NAME) (SAY " to occur in the ") (PRINC TO-LOC) (PRINC ".")
+;         (TERPRI) (SETQ ERROR T)))
+;       ...)
+; 
+; caught STYLE-WARNING:
+;   The variable DIRECTION is defined but never used.
+; 
+; caught STYLE-WARNING:
+;   The variable ID is defined but never used.
+
+;     (EQUERY TO-ENT FROM-ENT)
+; 
+; caught STYLE-WARNING:
+;   undefined function: EQUERY
+
+;     (SAY "You have not declared ")
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAY
+
+;     (SAY-QUERY-FORMAT (CAR QUESTION))
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAY-QUERY-FORMAT
+
+;     (SHOW-PREDICTION (TQUERY TO-ENT FROM-ENT))
+; 
+; caught STYLE-WARNING:
+;   undefined function: SHOW-PREDICTION
+
+;     (TQUERY TO-ENT FROM-ENT)
+; 
+; caught STYLE-WARNING:
+;   undefined function: TQUERY
+; 
+; compilation unit finished
+;   Undefined functions:
+;     EQUERY SAY SAY-QUERY-FORMAT SHOW-PREDICTION TQUERY
+;   caught 7 STYLE-WARNING conditions
+
+;     (FIND-EXP-PATHS (QUANTITY-ID TO) (QUANTITY-ID FROM) (LIST (QUANTITY-ID TO))
+;      10)
+; 
+; caught STYLE-WARNING:
+;   undefined function: FIND-EXP-PATHS
+
+;     #'PREDICT
+; 
+; caught STYLE-WARNING:
+;   undefined function: PREDICT
+
+;     (SAME-PREDICTIONS PREDICTIONS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAME-PREDICTIONS
+; 
+; compilation unit finished
+;   Undefined functions:
+;     FIND-EXP-PATHS PREDICT SAME-PREDICTIONS
+;   caught 3 STYLE-WARNING conditions
+
+;     (FIND-TIME-PATHS (QUANTITY-ID TO) (LIST (QUANTITY-ID TO)) 10)
+; 
+; caught STYLE-WARNING:
+;   undefined function: FIND-TIME-PATHS
+
+;     (SAME-PREDICTIONS PREDICTIONS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAME-PREDICTIONS
+
+;     #'TIME-PREDICT
+; 
+; caught STYLE-WARNING:
+;   undefined function: TIME-PREDICT
+; 
+; compilation unit finished
+;   Undefined functions:
+;     FIND-TIME-PATHS SAME-PREDICTIONS TIME-PREDICT
+;   caught 3 STYLE-WARNING conditions
+
+;     (SAYCR "Does <quantity1> vary with <quantity2> in the <location> or")
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAYCR
+; 
+; compilation unit finished
+;   Undefined function:
+;     SAYCR
+;   caught 1 STYLE-WARNING condition
+
+;     (SAME-PREDICTIONS-AUX (CAAR PREDICTIONS) (CDR PREDICTIONS))
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAME-PREDICTIONS-AUX
+; 
+; compilation unit finished
+;   Undefined function:
+;     SAME-PREDICTIONS-AUX
+;   caught 1 STYLE-WARNING condition
+
+;     (FIND-INTO TO)
+; 
+; caught STYLE-WARNING:
+;   undefined function: FIND-INTO
+; 
+; compilation unit finished
+;   Undefined function:
+;     FIND-INTO
+;   caught 1 STYLE-WARNING condition
+
+;     (EXOGENOUS (CLAIM-CAUSE NEXT))
+; 
+; caught STYLE-WARNING:
+;   undefined function: EXOGENOUS
+
+;     (FIND-INTO TO)
+; 
+; caught STYLE-WARNING:
+;   undefined function: FIND-INTO
+; 
+; compilation unit finished
+;   Undefined functions:
+;     EXOGENOUS FIND-INTO
+;   caught 2 STYLE-WARNING conditions
+
+;     (FIND-INTO ID)
+; 
+; caught STYLE-WARNING:
+;   undefined function: FIND-INTO
+; 
+; compilation unit finished
+;   Undefined function:
+;     FIND-INTO
+;   caught 1 STYLE-WARNING condition
+
+;     (PREDICT-AUX (CLAIM-DIRECTION (CAR PATH)) (CDR PATH))
+; 
+; caught STYLE-WARNING:
+;   undefined function: PREDICT-AUX
+; 
+; compilation unit finished
+;   Undefined function:
+;     PREDICT-AUX
+;   caught 1 STYLE-WARNING condition
+
+;     (TIME-PREDICT-AUX (REVERSE PATH))
+; 
+; caught STYLE-WARNING:
+;   undefined function: TIME-PREDICT-AUX
+; 
+; compilation unit finished
+;   Undefined function:
+;     TIME-PREDICT-AUX
+;   caught 1 STYLE-WARNING condition
+
+;     (COMPARE-TO-FACTS FACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: COMPARE-TO-FACTS
+
+;     #'SHOW-PREDICT-ONE
+; 
+; caught STYLE-WARNING:
+;   undefined function: SHOW-PREDICT-ONE
+; 
+; compilation unit finished
+;   Undefined functions:
+;     COMPARE-TO-FACTS SHOW-PREDICT-ONE
+;   caught 2 STYLE-WARNING conditions
+
+;     (RETAIN-PREDICTIONS REST)
+; 
+; caught STYLE-WARNING:
+;   undefined function: RETAIN-PREDICTIONS
+
+;     #'SHOW-EXPLAIN-ONE
+; 
+; caught STYLE-WARNING:
+;   undefined function: SHOW-EXPLAIN-ONE
+; 
+; compilation unit finished
+;   Undefined functions:
+;     RETAIN-PREDICTIONS SHOW-EXPLAIN-ONE
+;   caught 2 STYLE-WARNING conditions
+
+;     (SHOW-EXPLAIN-PATH (CDR E))
+; 
+; caught STYLE-WARNING:
+;   undefined function: SHOW-EXPLAIN-PATH
+
+;     (STATE-PREDICTION PREDICTION)
+; 
+; caught STYLE-WARNING:
+;   undefined function: STATE-PREDICTION
+; 
+; compilation unit finished
+;   Undefined functions:
+;     SHOW-EXPLAIN-PATH STATE-PREDICTION
+;   caught 2 STYLE-WARNING conditions
+
+;     (SHOW-LINK (CAR PATH))
+; 
+; caught STYLE-WARNING:
+;   undefined function: SHOW-LINK
+; 
+; compilation unit finished
+;   Undefined function:
+;     SHOW-LINK
+;   caught 1 STYLE-WARNING condition
+
+;     #'REMOVE-STRUCT-BY-ID
+; 
+; caught STYLE-WARNING:
+;   undefined function: REMOVE-STRUCT-BY-ID
+; 
+; compilation unit finished
+;   Undefined function:
+;     REMOVE-STRUCT-BY-ID
+;   caught 1 STYLE-WARNING condition
+
+;     #'DISABLE-STRUCT-BY-ID
+; 
+; caught STYLE-WARNING:
+;   undefined function: DISABLE-STRUCT-BY-ID
+; 
+; compilation unit finished
+;   Undefined function:
+;     DISABLE-STRUCT-BY-ID
+;   caught 1 STYLE-WARNING condition
+
+;     #'ENABLE-STRUCT-BY-ID
+; 
+; caught STYLE-WARNING:
+;   undefined function: ENABLE-STRUCT-BY-ID
+; 
+; compilation unit finished
+;   Undefined function:
+;     ENABLE-STRUCT-BY-ID
+;   caught 1 STYLE-WARNING condition
+
+;     (CREATE-GROUP REST)
+; 
+; caught STYLE-WARNING:
+;   undefined function: CREATE-GROUP
+
+;     (INPUT-FROM-FILE STREAM)
+; 
+; caught STYLE-WARNING:
+;   undefined function: INPUT-FROM-FILE
+
+;     (PROVIDE-HELP REST)
+; 
+; caught STYLE-WARNING:
+;   undefined function: PROVIDE-HELP
+
+;     (SAVE-CONTENT REST)
+; 
+; caught STYLE-WARNING:
+;   undefined function: SAVE-CONTENT
+
+;     (UNCREATE-GROUP REST)
+; 
+; caught STYLE-WARNING:
+;   undefined function: UNCREATE-GROUP
+; 
+; compilation unit finished
+;   Undefined functions:
+;     CREATE-GROUP INPUT-FROM-FILE PROVIDE-HELP SAVE-CONTENT UNCREATE-GROUP
+;   caught 5 STYLE-WARNING conditions
+
+;     (HELP-WITH NEXT)
+; 
+; caught STYLE-WARNING:
+;   undefined function: HELP-WITH
+; 
+; compilation unit finished
+;   Undefined function:
+;     HELP-WITH
+;   caught 1 STYLE-WARNING condition
+
+;     (PARSE-STRING INPUT)
+; 
+; caught STYLE-WARNING:
+;   undefined function: PARSE-STRING
+; 
+; compilation unit finished
+;   Undefined function:
+;     PARSE-STRING
+;   caught 1 STYLE-WARNING condition
+; 
+; caught STYLE-WARNING:
+;   undefined function: PARSE-STRING
+; 
+; compilation unit finished
+;   Undefined function:
+;     PARSE-STRING
+;   caught 1 STYLE-WARNING condition
+
+;     (PARSE-TO-SUBSTRINGS S)
+; 
+; caught STYLE-WARNING:
+;   undefined function: PARSE-TO-SUBSTRINGS
+
+;     (STRIP-FRONT-BLANKS (PARSE-TO-SUBSTRINGS S))
+; 
+; caught STYLE-WARNING:
+;   undefined function: STRIP-FRONT-BLANKS
+; 
+; compilation unit finished
+;   Undefined functions:
+;     PARSE-TO-SUBSTRINGS STRIP-FRONT-BLANKS
+;   caught 2 STYLE-WARNING conditions
+unhandled SIMPLE-ERROR:
+  There is no applicable method for the generic function
+    #<STANDARD-GENERIC-FUNCTION YASON:ENCODE (11)>
+  when called with arguments
+    (#S(PREDICTION
+        :ID P1
+        :FROM Q5
+        :TO Q11
+        :DIRECTION DOES-NOT-CHANGE
+        :PATHS NIL)
+     #<SYNONYM-STREAM :SYMBOL SB-SYS:*STDOUT* {10001E5B61}>).
+
+0: (SB-DEBUG::MAP-BACKTRACE #<CLOSURE (LAMBDA #) {1003A0A379}>)[:EXTERNAL]
+1: (BACKTRACE 128 #<SYNONYM-STREAM :SYMBOL SB-SYS:*STDERR* {1000105A61}>)
+2: (SB-DEBUG::DEBUGGER-DISABLED-HOOK
+    #<SIMPLE-ERROR
+      "~@<There is no applicable method for the generic function ~2I~_~S~
+          ~I~_when called with arguments ~2I~_~S.~:>"
+      {1003A04331}>
+    #<unavailable argument>)
+3: (SB-DEBUG::RUN-HOOK
+    *INVOKE-DEBUGGER-HOOK*
+    #<SIMPLE-ERROR
+      "~@<There is no applicable method for the generic function ~2I~_~S~
+          ~I~_when called with arguments ~2I~_~S.~:>"
+      {1003A04331}>)
+4: (INVOKE-DEBUGGER
+    #<SIMPLE-ERROR
+      "~@<There is no applicable method for the generic function ~2I~_~S~
+          ~I~_when called with arguments ~2I~_~S.~:>"
+      {1003A04331}>)
+5: (ERROR
+    "~@<There is no applicable method for the generic function ~2I~_~S~
+          ~I~_when called with arguments ~2I~_~S.~:>")[:EXTERNAL]
+6: ((SB-PCL::FAST-METHOD NO-APPLICABLE-METHOD (T))
+    #<unavailable argument>
+    #<unavailable argument>
+    #<STANDARD-GENERIC-FUNCTION YASON:ENCODE (11)>)[:EXTERNAL]
+7: (SB-PCL::CALL-NO-APPLICABLE-METHOD
+    #<STANDARD-GENERIC-FUNCTION YASON:ENCODE (11)>
+    (#S(PREDICTION
+        :ID P1
+        :FROM Q5
+        :TO Q11
+        :DIRECTION DOES-NOT-CHANGE
+        :PATHS NIL)
+     #<SYNONYM-STREAM :SYMBOL SB-SYS:*STDOUT* {10001E5B61}>))
+8: ((SB-PCL::FAST-METHOD YASON:ENCODE (LIST))
+    #<unused argument>
+    #<unused argument>
+    (#S(PREDICTION
+        :ID P1
+        :FROM Q5
+        :TO Q11
+        :DIRECTION DOES-NOT-CHANGE
+        :PATHS NIL)
+     #S(PREDICTION
+        :ID P2
+        :FROM Q5
+        :TO Q9
+        :DIRECTION DECREASES
+        :PATHS ((DECREASES
+                 #S(CLAIM
+                    :ID C8
+                    :CAUSE Q7
+                    :EFFECT Q9
+                    :DIRECTION DECREASES
+                    :NOTE (LIPOFUSCIN-FILLED LYSOSOMES REQUIRE MORE LYTIC
+                           ENZYMES))
+                 #S(CLAIM
+                    :ID C6
+                    :CAUSE Q6
+                    :EFFECT Q7
+                    :DIRECTION INCREASES
+                    :NOTE (OXIDIZED-PROTEINS AND FE CROSSLINK TO FORM
+                           LIPOFUSCIN))
+                 #S(CLAIM
+                    :ID C5
+                    :CAUSE Q5
+                    :EFFECT Q6
+                    :DIRECTION INCREASES
+                    :NOTE (ROS OXIDIZES PROTEINS TO PRODUCE OXIDIZED
+                           PROTEINS)))))
+     #S(PREDICTION
+        :ID P3
+        :FROM Q0
+        :TO Q8
+        :DIRECTION INCREASES
+        :PATHS ((INCREASES
+                 #S(CLAIM
+                    :ID C11
+                    :CAUSE Q10
+                    :EFFECT Q8
+                    :DIRECTION INCREASES
+                    :NOTE (DAMAGED LYSOSOMAL MEMBRANES SPILL LIPOFUSCIN INTO
+                           CYTOPLASM))
+                 #S(CLAIM
+                    :ID C10
+                    :CAUSE Q5
+                    :EFFECT Q10
+                    :DIRECTION INCREASES
+                    :NOTE (ROS IN LYSOSOMES DAMAGES LYSOSOMAL MEMBRANES))
+                 #S(CLAIM
+                    :ID C9
+                    :CAUSE Q7
+                    :EFFECT Q5
+                    :DIRECTION INCREASES
+                    :NOTE (FE IN LIPOFUSCIN REACTS WITH H2O2 TO PRODUCE ROS))
+                 #S(CLAIM
+                    :ID C6
+                    :CAUSE Q6
+                    :EFFECT Q7
+                    :DIRECTION INCREASES
+                    :NOTE (OXIDIZED-PROTEINS AND FE CROSSLINK TO FORM
+                           LIPOFUSCIN))
+                 #S(CLAIM
+                    :ID C5
+                    :CAUSE Q5
+                    :EFFECT Q6
+                    :DIRECTION INCREASES
+                    :NOTE (ROS OXIDIZES PROTEINS TO PRODUCE OXIDIZED
+                           PROTEINS)))
+                (INCREASES
+                 #S(CLAIM
+                    :ID C11
+                    :CAUSE Q10
+                    :EFFECT Q8
+                    :DIRECTION INCREASES
+                    :NOTE (DAMAGED LYSOSOMAL MEMBRANES SPILL LIPOFUSCIN INTO
+                           CYTOPLASM))
+                 #S(CLAIM
+                    :ID C10
+                    :CAUSE Q5
+                    :EFFECT Q10
+                    :DIRECTION INCREASES
+                    :NOTE (ROS IN LYSOSOMES DAMAGES LYSOSOMAL MEMBRANES))
+                 #S(CLAIM
+                    :ID C4
+                    :CAUSE Q4
+                    :EFFECT Q5
+                    :DIRECTION INCREASES
+                    :NOTE (FREE FE REACTS WITH H2O2 TO PRODUCE ROS))
+                 #S(CLAIM
+                    :ID C3
+                    :CAUSE Q1
+                    :EFFECT Q4
+                    :DIRECTION INCREASES
+                    :NOTE (LYSOSOME DIGESTION PRODUCES FE FROM JUNK PROTEINS))
+                 #S(CLAIM
+                    :ID C2
+                    :CAUSE Q2
+                    :EFFECT Q1
+                    :DIRECTION INCREASES
+                    :NOTE (LAMP2A IMPORTS JUNK-PROTEIN PROTEINS FROM CYTOPLASM
+                           INTO LYSOSOME)))
+                (INCREASES
+                 #S(CLAIM
+                    :ID C11
+                    :CAUSE Q10
+                    :EFFECT Q8
+                    :DIRECTION INCREASES
+                    :NOTE (DAMAGED LYSOSOMAL MEMBRANES SPILL LIPOFUSCIN INTO
+                           CYTOPLASM))
+                 #S(CLAIM
+                    :ID C10
+                    :CAUSE Q5
+                    :EFFECT Q10
+                    :DIRECTION INCREASES
+                    :NOTE (ROS IN LYSOSOMES DAMAGES LYSOSOMAL MEMBRANES))
+                 #S(CLAIM
+                    :ID C4
+                    :CAUSE Q4
+                    :EFFECT Q5
+                    :DIRECTION INCREASES
+                    :NOTE (FREE FE REACTS WITH H2O2 TO PRODUCE ROS))
+                 #S(CLAIM
+                    :ID C3
+                    :CAUSE Q1
+                    :EFFECT Q4
+                    :DIRECTION INCREASES
+                    :NOTE (LYSOSOME DIGESTION PRODUCES FE FROM JUNK PROTEINS))
+                 #S(CLAIM
+                    :ID C1
+                    :CAUSE Q3
+                    :EFFECT Q1
+                    :DIRECTION DECREASES
+                    :NOTE NIL)
+                 #S(CLAIM
+                    :ID C7
+                    :CAUSE Q7
+                    :EFFECT Q3
+                    :DIRECTION DECREASES
+                    :NOTE (LIPOFUSCIN REDUCES THE RATE OF DISASSEMBLING JUNK
+                           PROTEINS))
+                 #S(CLAIM
+                    :ID C6
+                    :CAUSE Q6
+                    :EFFECT Q7
+                    :DIRECTION INCREASES
+                    :NOTE (OXIDIZED-PROTEINS AND FE CROSSLINK TO FORM
+                           LIPOFUSCIN))
+                 #S(CLAIM
+                    :ID C5
+                    :CAUSE Q5
+                    :EFFECT Q6
+                    :DIRECTION INCREASES
+                    :NOTE (ROS OXIDIZES PROTEINS TO PRODUCE OXIDIZED
+                           PROTEINS)))))
+     #S(PREDICTION
+        :ID P4
+        :FROM Q0
+        :TO Q7
+        :DIRECTION VARIES-AMBIGUOUSLY
+        :PATHS ((INCREASES
+                 #S(CLAIM
+                    :ID C6
+                    :CAUSE Q6
+                    :EFFECT Q7
+                    :DIRECTION INCREASES
+                    :NOTE (OXIDIZED-PROTEINS AND FE CROSSLINK TO FORM
+                           LIPOFUSCIN))
+                 #S(CLAIM
+                    :ID C5
+                    :CAUSE Q5
+                    :EFFECT Q6
+                    :DIRECTION INCREASES
+                    :NOTE (ROS OXIDIZES PROTEINS TO PRODUCE OXIDIZED PROTEINS))
+                 #S(CLAIM
+                    :ID C9
+                    :CAUSE Q7
+                    :EFFECT Q5
+                    :DIRECTION INCREASES
+                    :NOTE (FE IN LIPOFUSCIN REACTS WITH H2O2 TO PRODUCE ROS)))
+                (INCREASES
+                 #S(CLAIM
+                    :ID C6
+                    :CAUSE Q6
+                    :EFFECT Q7
+                    :DIRECTION INCREASES
+                    :NOTE (OXIDIZED-PROTEINS AND FE CROSSLINK TO FORM
+                           LIPOFUSCIN))
+                 #S(CLAIM
+                    :ID C5
+                    :CAUSE Q5
+                    :EFFECT Q6
+                    :DIRECTION INCREASES
+                    :NOTE (ROS OXIDIZES PROTEINS TO PRODUCE OXIDIZED PROTEINS))
+                 #S(CLAIM
+                    :ID C4
+                    :CAUSE Q4
+                    :EFFECT Q5
+                    :DIRECTION INCREASES
+                    :NOTE (FREE FE REACTS WITH H2O2 TO PRODUCE ROS))
+                 #S(CLAIM
+                    :ID C3
+                    :CAUSE Q1
+                    :EFFECT Q4
+                    :DIRECTION INCREASES
+                    :NOTE (LYSOSOME DIGESTION PRODUCES FE FROM JUNK PROTEINS))
+                 #S(CLAIM
+                    :ID C2
+                    :CAUSE Q2
+                    :EFFECT Q1
+                    :DIRECTION INCREASES
+                    :NOTE (LAMP2A IMPORTS JUNK-PROTEIN PROTEINS FROM CYTOPLASM
+                           INTO LYSOSOME)))
+                (DECREASES
+                 #S(CLAIM
+                    :ID C6
+                    :CAUSE Q6
+                    :EFFECT Q7
+                    :DIRECTION INCREASES
+                    :NOTE (OXIDIZED-PROTEINS AND FE CROSSLINK TO FORM
+                           LIPOFUSCIN))
+                 #S(CLAIM
+                    :ID C5
+                    :CAUSE Q5
+                    :EFFECT Q6
+                    :DIRECTION INCREASES
+                    :NOTE (ROS OXIDIZES PROTEINS TO PRODUCE OXIDIZED PROTEINS))
+                 #S(CLAIM
+                    :ID C4
+                    :CAUSE Q4
+                    :EFFECT Q5
+                    :DIRECTION INCREASES
+                    :NOTE (FREE FE REACTS WITH H2O2 TO PRODUCE ROS))
+                 #S(CLAIM
+                    :ID C3
+                    :CAUSE Q1
+                    :EFFECT Q4
+                    :DIRECTION INCREASES
+                    :NOTE (LYSOSOME DIGESTION PRODUCES FE FROM JUNK PROTEINS))
+                 #S(CLAIM
+                    :ID C1
+                    :CAUSE Q3
+                    :EFFECT Q1
+                    :DIRECTION DECREASES
+                    :NOTE NIL)
+                 #S(CLAIM
+                    :ID C7
+                    :CAUSE Q7
+                    :EFFECT Q3
+                    :DIRECTION DECREASES
+                    :NOTE (LIPOFUSCIN REDUCES THE RATE OF DISASSEMBLING JUNK
+                           PROTEINS))))))
+    #<SYNONYM-STREAM :SYMBOL SB-SYS:*STDOUT* {10001E5B61}>)
+9: (SB-INT:SIMPLE-EVAL-IN-LEXENV
+    (YASON:ENCODE (REVERSE PREDICTIONS*))
+    #<NULL-LEXENV>)
+10: (SB-FASL::LOAD-AS-SOURCE
+     #<SB-SYS:FD-STREAM
+       for "file /Users/glen/Code/php/modeling/includes/lisp/get_predictions.lisp"
+       {1002E12741}>
+     NIL
+     NIL)
+11: ((FLET SB-FASL::LOAD-STREAM)
+     #<SB-SYS:FD-STREAM
+       for "file /Users/glen/Code/php/modeling/includes/lisp/get_predictions.lisp"
+       {1002E12741}>
+     NIL)
+12: (LOAD
+     #<SB-SYS:FD-STREAM
+       for "file /Users/glen/Code/php/modeling/includes/lisp/get_predictions.lisp"
+       {1002E12741}>)[:EXTERNAL]
+13: (SB-IMPL::PROCESS-SCRIPT "get_predictions.lisp")
+14: (SB-IMPL::TOPLEVEL-INIT)
+15: ((LABELS SB-IMPL::RESTART-LISP))
+
+unhandled condition in --disable-debugger mode, quitting
