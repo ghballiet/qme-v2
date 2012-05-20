@@ -2273,3 +2273,22 @@
 #10 /Users/glen/Dropbox/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
 #11 /Users/glen/Dropbox/Code/cake/qme/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #12 {main}
+2012-05-20 13:51:00 Error: [MissingControllerException] Controller class EntityController could not be found.
+#0 /Users/glen/Dropbox/Code/cake/qme/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-05-20 14:13:07 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Qmodel.' in 'field list'
+#0 /Users/glen/Dropbox/Code/cake/qme/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /Users/glen/Dropbox/Code/cake/qme/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT DISTINCT...', Array)
+#2 /Users/glen/Dropbox/Code/cake/qme/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT DISTINCT...', Array, Array)
+#3 /Users/glen/Dropbox/Code/cake/qme/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT DISTINCT...', false)
+#4 /Users/glen/Dropbox/Code/cake/qme/lib/Cake/Model/Model.php(2663): DboSource->read(Object(Qmodel), Array)
+#5 /Users/glen/Dropbox/Code/cake/qme/lib/Cake/Model/Datasource/DboSource.php(571): Model->find('all', Array)
+#6 /Users/glen/Dropbox/Code/cake/qme/lib/Cake/Model/Model.php(775): DboSource->query('findAllByUserId', Array, Object(Qmodel))
+#7 [internal function]: Model->__call('findAllByUserId', Array)
+#8 /Users/glen/Dropbox/Code/cake/qme/app/Controller/UsersController.php(45): Qmodel->findAllByUserId('1', Array)
+#9 [internal function]: UsersController->dashboard()
+#10 /Users/glen/Dropbox/Code/cake/qme/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#11 /Users/glen/Dropbox/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#12 /Users/glen/Dropbox/Code/cake/qme/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#13 /Users/glen/Dropbox/Code/cake/qme/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}

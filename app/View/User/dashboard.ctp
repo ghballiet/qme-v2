@@ -14,11 +14,7 @@
     $name = $model['Qmodel']['name'];
     $short_name = $model['Qmodel']['short_name'];
     $desc = $model['Qmodel']['description'];
-    
-    // TODO: add code here to build a button group, which is the last 
-    // column in the cell. it contains three buttons, View, Edit, and
-    // Delete. these should all be mini buttons.
-    
+        
     $btns = '';
 
     // view
@@ -38,6 +34,38 @@
       'action'=>'delete', 'short_name'=>$short_name), array('class'=>
       'btn btn-mini btn-danger'), 'Are you sure you want to delete ' .
       'this model?');
+    
+    echo $this->Html->tableCells(array(
+      $name,
+      $desc,
+      $btns
+    ));
+  }
+  ?>
+</table>
+
+
+<div class="page-header">
+  <h1>Public Models <small><? echo count($public_models); ?> model(s) found</small></h1>
+</div>
+
+<table class="table table-condensed">
+  <?
+  echo $this->Html->tableHeaders(array('Name', 'Description', ''));
+  foreach($public_models as $model) {
+    $id = $model['Qmodel']['id'];
+    $name = $model['Qmodel']['name'];
+    $short_name = $model['Qmodel']['short_name'];
+    $desc = $model['Qmodel']['description'];
+        
+    $btns = '';
+
+    // view
+    $btns .= $this->Html->link('View', array('controller'=>'qmodels', 
+      'action'=>'view', 'short_name'=>$short_name), array('class'=>
+      'btn btn-mini btn-primary'));
+    $btns .= ' ';
+
     
     echo $this->Html->tableCells(array(
       $name,

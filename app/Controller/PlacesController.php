@@ -39,9 +39,10 @@ class PlacesController extends AppController {
     $this->Place->id = $id;
     $place = $this->Place->read();
     $model = $this->Place->Qmodel->findById($place['Place']['qmodel_id']);
-    $short_name = $model['Qmodel']['short_name'];
-    
+    $short_name = $model['Qmodel']['short_name'];        
     $this->Place->delete($id);
+    $this->alertSuccess('Success!', sprintf('Successfully deleted ' . 
+      '<strong>%s</strong>.', $place['Place']['name']), true);
     $this->redirect(array('controller'=>'qmodels', 'action'=>'view',
       'short_name'=>$short_name));
   }

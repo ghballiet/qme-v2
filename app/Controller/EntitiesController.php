@@ -26,5 +26,18 @@ class EntitiesController extends AppController {
       echo 'FAILURE :(';
     }
   }
+  
+  public function delete($id = null) { 
+    $this->Entity->id = $id;
+    $entity = $this->Entity->read();
+    $place = $this->Entity->Place->findById($entity['Entity']['place_id']);
+    $short_name = $place['Qmodel']['short_name'];
+    
+    $this->Entity->delete($id);
+    $this->alertSuccess('Success!', sprintf('Successfully deleted ' . 
+      '<strong>%s</strong>.', $entity['Entity']['name']), true);
+    $this->redirect(array('controller'=>'qmodels', 'action'=>'view', 
+      'short_name'=>$short_name));
+  }
 }
 ?>

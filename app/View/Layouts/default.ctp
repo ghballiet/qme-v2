@@ -43,14 +43,14 @@
                       array('controller'=>'users',
                         'action'=>'dashboard'));                    
                     echo '</li>';
-                    if($this->params['controller'] == 'qmodels' && 
-                      $this->params['action'] == 'view') {
-                      // display links
-                      echo '<li class="divider-vertical"></li>';
-                      echo '<li><a href="#add_place" data-toggle="modal">Add Place</a></li>';
-                      echo '<li><a href="#add_entity" data-toggle="modal">Add Entity</a></li>';
-                      echo '<li><a href="#add_link" data-toggle="modal">Add Hypothesis</a></li>';
-                    }
+                    // if($this->params['controller'] == 'qmodels' && 
+                    //   $this->params['action'] == 'view') {
+                    //   // display links
+                    //   echo '<li class="divider-vertical"></li>';
+                    //   echo '<li><a href="#add_place" data-toggle="modal">Add Place</a></li>';
+                    //   echo '<li><a href="#add_entity" data-toggle="modal">Add Entity</a></li>';
+                    //   echo '<li><a href="#add_link" data-toggle="modal">Add Hypothesis</a></li>';
+                    // }
                   } else {
                     echo '<li>';
                     echo $this->Html->link('Login',

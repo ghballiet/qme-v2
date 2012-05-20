@@ -41,7 +41,12 @@ class UsersController extends AppController {
   
   public function dashboard() {
     $models = $this->User->Qmodel->findAllByUserId($this->Auth->user('id'));
+    $public_models = $this->User->Qmodel->find('all', array(
+      'conditions'=>array('Qmodel.private'=>0),
+      'order'=>array('Qmodel.name')
+    ));
     $this->set('models', $models);
+    $this->set('public_models', $public_models);
   }
 }
 ?>

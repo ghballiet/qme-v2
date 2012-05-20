@@ -1,1 +1,1 @@
-$(document).ready(function(){$(".modal .btn-primary").live("click",function(a){var b=$(this).parent().parent().find("form");b.submit()})});
+$(document).ready(function(){$(".modal .btn-primary").live("click",function(a){var b=$(this).parent().parent().find("form");b.submit()});$(".toggle_text").toggle(function(){console.log("ON")},function(){console.log("OFF")})});

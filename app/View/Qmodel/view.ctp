@@ -258,7 +258,7 @@ foreach($links as $link) {
   <div class="modal-footer">
     <a href="#" data-dismiss="modal" class="btn">Close</a>
     <?
-    echo $this->Html->link('Delete', array('controller'=>'entity', 
+    echo $this->Html->link('Delete', array('controller'=>'entities', 
       'action'=>'delete'), array('class'=>'btn btn-danger btn-delete'),
       'Are you sure you want to delete this entity? This cannot be undone.');
     ?>
@@ -290,5 +290,18 @@ foreach($links as $link) {
   <div class="modal-footer">
     <a href="#" data-dismiss="modal" class="btn">Close</a>
     <a href="#" data-dismiss="modal" class="btn btn-primary">Save Changes</a>
+  </div>
+</div>
+
+<!-- navbar at top -->
+<div class="subnav subnav-fixed">
+  <div class="container">
+    <ul class="nav nav-pills">
+      <li><a href="#add_place" data-toggle="modal">Add Place</a></li>
+      <li><a href="#add_entity" data-toggle="modal">Add Entity</a></li>
+      <li><a href="#add_link" data-toggle="modal">Add Hypothesis</a></li>
+      <li><a href="#" class="toggle_text">Hide Text</a></li>
+      <li><a href="#" class="toggle_model">Hide Graphics</a></li>
+    </ul>    
   </div>
 </div>
