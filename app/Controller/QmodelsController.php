@@ -90,6 +90,9 @@ class QmodelsController extends AppController {
       'decreases' => 'decreases',
       'does_not_change' => 'does not change'      
     );
+    $fact_list = $entity_list;
+    $fact_list[0] = 'time';
+    ksort($fact_list);
 
     $this->set('model', $model);
     $this->set('places', $places);
@@ -101,6 +104,7 @@ class QmodelsController extends AppController {
     $this->set('link_types', $link_types);
     $this->set('facts', $facts);
     $this->set('fact_types', $fact_types);
+    $this->set('fact_list', $fact_list);
   }
 }
 ?>

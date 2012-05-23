@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  facts();
+  // facts();
 });
 
 var facts = function() {

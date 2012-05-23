@@ -7,7 +7,7 @@ $this->start('scripts');
 echo $this->Html->script('d3.v2.min.js');
 echo $this->Html->script('view');
 echo $this->Html->script('drawing');
-// echo $this->Html->script('drawing-facts');
+echo $this->Html->script('drawing-facts');
 echo $this->Html->script('edit-item');
 $this->end();
 ?>
@@ -351,7 +351,7 @@ foreach($facts as $fact) {
     echo $this->BootstrapForm->input('type',
       array('options'=>$link_types, 'label'=>''));
     echo $this->BootstrapForm->input('target_id', 
-      array('options'=>$entity_list, 'label'=>'with'));
+      array('options'=>$fact_list, 'label'=>'with'));
     echo $this->BootstrapForm->input('qmodel_id',
       array('type'=>'hidden', 'value'=>$model['Qmodel']['id']));
     echo '</form>';
