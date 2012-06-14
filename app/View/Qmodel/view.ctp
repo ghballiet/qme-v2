@@ -5,8 +5,8 @@ $this->end();
 
 $this->start('scripts');
 echo $this->Html->script('d3.v2.min.js');
-// echo $this->Html->script('view');
-// echo $this->Html->script('edit-item');
+echo $this->Html->script('view');
+echo $this->Html->script('edit-item');
 
 // commented out for now -- need to refactor this into several
 // different files 
