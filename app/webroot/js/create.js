@@ -1,10 +1,9 @@
 $(document).ready(function() {
-  $('#QmodelName').keyup(function(e) {
-    var str = String.fromCharCode(e.keyCode);
+  $('#QmodelName').keypress(function(e) {
+    var str = String.fromCharCode(e.which);
     if(str.match(/\W/g) != null && str != '-' && str != ' ')
       e.preventDefault();
-    var val = $(this).val();
-    val = val.toLowerCase();
+    var val = $(this).val().toLowerCase();
     val = val.replace(/\s+/g, ' ').trim();
     val = val.replace(/ /g, '-');
     $('#QmodelShortName').val(val);
