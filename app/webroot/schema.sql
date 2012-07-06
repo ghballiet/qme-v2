@@ -43,3 +43,11 @@ create table links (
   type varchar(250),
   qmodel_id int
 );
+
+create table facts (
+  id int primary key auto_increment, 
+  source_id int,
+  target_id int,
+  type varchar(250),
+  qmodel_id int
+);
