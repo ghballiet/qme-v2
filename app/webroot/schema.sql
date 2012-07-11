@@ -51,3 +51,10 @@ create table facts (
   type varchar(250),
   qmodel_id int
 );
+
+create table notes (
+  id int primary key auto_increment, 
+  note_text longtext,
+  facts_id int,
+  qmodel_id int
+);
